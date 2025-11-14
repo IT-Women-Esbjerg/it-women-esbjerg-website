@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+
+@theme {
+  --color-beige: #f4ebda;
+  --color-dark-blue: #0b1956;
+  --color-dark-pink: #f13492;
+  --color-light-pink: #f3b5c5;
+
+  --font-sans: "Poppins", sans-serif;
+}
