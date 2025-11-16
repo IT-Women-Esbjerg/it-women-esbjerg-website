@@ -1,10 +1,7 @@
-+++
-date = '2025-11-14T19:07:27+01:00'
-draft = true
-title = ''
-+++
+{{ define "main" }}
+{{ .Content }}
 
-<!-- hero section -->
+<!-- Hero -->
 <section class="flex justify-between items-center my-32">
 	<div class="flex-2 flex flex-col gap-5">
 		<h1 class="text-4xl md:text-5xl lg:text-6xl uppercase font-extrabold">
@@ -43,6 +40,7 @@ title = ''
 	</div>
 </section>
 
+<!-- Upcoming Events -->
 <section>
 	<div class="flex gap-4 items-center mb-8">
 		<div class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 relative flex items-center justify-center">
@@ -59,4 +57,19 @@ title = ''
 		<p class="bg-white p-28">Calendar 1</p>
 		<p class="bg-white p-28">Calendar 2</p>
 	</div>
+
+	<!-- Upcoming Events List -->
+	<div class="bg-beige rounded-2xl p-6 md:p-8 max-w-4xl mx-auto">
+		{{ range first 3 (where site.RegularPages "Section" "events").ByDate.Reverse }}
+		<a href="{{ .Permalink }}"
+			class="flex justify-between items-center py-4 border-b border-light-pink last:border-b-0 hover:bg-white/50 transition-colors rounded px-4 -mx-4">
+			<div class="text-dark-pink font-medium text-sm md:text-base whitespace-nowrap">{{ .Date.Format "Mon, Jan 2"
+				}}
+			</div>
+			<div class="text-dark-pink flex-1 px-4 md:px-8">{{ .Title }}</div>
+			<div class="text-dark-pink font-medium text-sm md:text-base">{{ .Params.time }}</div>
+		</a>
+		{{ end }}
+	</div>
 </section>
+{{ end }}

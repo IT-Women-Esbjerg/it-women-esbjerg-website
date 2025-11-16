@@ -1,9 +1,20 @@
 +++
-date = '2025-11-14T20:02:25+01:00'
+date = '2025-11-16T14:57:06+01:00'
 draft = true
 title = '2025 11 Linked in Workshop'
+time = '16:30-18:00'
+location = 'EASV'
+description = ''
 +++
 
-# LinkedIn Workshop
+# 2025 11 Linked in Workshop
 
-Write more things here pls
+## Event Details
+
+**Date:** Sunday, November 16, 2025  
+**Time:** 16:30-18:00
+**Location:** EASV
+
+## Description
+
+Write event description here...

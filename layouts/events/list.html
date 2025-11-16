@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto">
+	<!-- Page Header -->
+	<div class="flex gap-4 items-center mb-8">
+		<div class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 relative flex items-center justify-center">
+			<svg class="absolute inset-0 w-full h-full text-dark-pink">
+				<use href="#icon-backdrop" />
+			</svg>
+			<svg class="relative z-10 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-beige">
+				<use href="#calendar-icon" />
+			</svg>
+		</div>
+		<h1 class="text-3xl md:text-4xl lg:text-5xl text-dark-pink font-bold">All Events</h1>
+	</div>
+	
+	<!-- Events List -->
+	<div class="bg-beige rounded-2xl p-6 md:p-8">
+		{{ range .Pages.ByDate.Reverse }}
+		<a href="{{ .Permalink }}" class="flex justify-between items-center py-4 border-b border-light-pink last:border-b-0 hover:bg-white/50 transition-colors rounded px-4 -mx-4">
+			<div class="text-dark-pink font-medium text-sm md:text-base whitespace-nowrap">
+				{{ .Date.Format "Mon, Jan 2" }}
+			</div>
+			<div class="text-dark-pink flex-1 px-4 md:px-8">{{ .Title }}</div>
+			<div class="text-dark-pink font-medium text-sm md:text-base">{{ .Params.time }}</div>
+		</a>
+		{{ end }}
+	</div>
+</div>
+{{ end }}

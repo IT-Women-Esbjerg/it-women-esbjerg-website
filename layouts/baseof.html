@@ -18,7 +18,7 @@
     {{ partial "header.html" . }}
     {{ partial "svg.html" . }}
     <main>
-        {{ .Content }}
+        {{ block "main" . }}{{ end }}
     </main>
 
     <script src="/js/script.js" type="text/javascript"></script>
