@@ -1,13 +1,13 @@
 +++
-date = '2025-11-16T14:57:06+01:00'
+date = '2025-11-16T15:38:32+01:00'
 draft = true
-title = 'Linked in Workshop'
+title = 'New Year Fun'
 time = '16:30-18:00'
-location = 'EASV'
+location = ''
 description = ''
 +++
 
-# Linked in Workshop
+# New Year Fun
 
 ## Event Details
 

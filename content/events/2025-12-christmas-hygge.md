@@ -1,13 +1,13 @@
 +++
-date = '2025-11-16T14:57:06+01:00'
+date = '2025-11-16T15:36:44+01:00'
 draft = true
-title = 'Linked in Workshop'
+title = 'Christmas Hygge'
 time = '16:30-18:00'
-location = 'EASV'
+location = ''
 description = ''
 +++
 
-# Linked in Workshop
+# Christmas Hygge
 
 ## Event Details
 
