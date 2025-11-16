@@ -1,15 +1,16 @@
-<section class="flex justify-around items-center">
-    <form class="flex flex-col gap-2 max-w-sm md:max-w-md text-white w-2/3">
+<section class="flex items-center justify-around relative my-32">
+    <!-- Newsletter subscription form -->
+    <form class="flex flex-col gap-1 lg:gap-2 max-w-sm lg:max-w-md text-white mt-6 xl:mt-16">
         <p class="text-white lg:text-xl">Subscribe to our fantastic newsletter and be updated about all
             the events that are coming
         </p>
-        <div class="flex gap-8">
+        <div class="flex gap-4 lg:gap-8">
             <input type="email" name="email" placeholder="Your email address" required
                 class="flex-1 sm:max-w-md px-4 py-3 rounded-md border-2 border-white bg-white text-dark-pink placeholder-dark-pink/70 focus:outline-none focus:border-dark-pink">
             <button type="submit"
                 class="bg-dark-pink font-semibold rounded-md px-6 py-3 hover:bg-opacity-90 transition-all whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed">Subscribe</button>
         </div>
-        <div class="flex gap-4 items-start">
+        <div class="flex gap-2 lg:gap-4 items-start text-dark-pink">
             <input id="newsletter-consent" name="consent" type="checkbox" required class="mt-1 accent-dark-pink">
             <label for="newsletter-consent">
                 I agree to receive updates from IT Women Esbjerg.
@@ -17,9 +18,9 @@
         </div>
     </form>
 
-
-    <svg class="max-w-28 sm:max-w-48 md:max-w-3xs lg:max-w-3xs -translate-y-1/3" viewBox="0 0 398 361" fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+    <!-- Megaphone -->
+    <svg class="max-w-28 hidden md:block md:max-w-3xs lg:max-w-3xs xl:max-w-xs -translate-y-1/3 xl:-translate-y-1/2"
+        viewBox="0 0 398 361" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_38_355" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="29" width="318"
             height="332">
             <path d="M0 29.4478H317.137V361H0V29.4478Z" fill="white" />
@@ -61,8 +62,9 @@
             fill="#F13492" />
     </svg>
 
-
-    <svg class="absolute -z-1" viewBox="0 0 1440 418" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background wave -->
+    <svg class="absolute -z-10 left-0 top-0 w-full h-auto -translate-y-1/6" viewBox="0 0 1440 418" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_36_354" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-1" y="234" width="1441"
             height="184">
             <path d="M1439.8 417.097H-0.200195V235H1439.8V417.097Z" fill="white" />
