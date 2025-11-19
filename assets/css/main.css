@@ -11,7 +11,7 @@
 }
 
 .wave-background {
-  background-image: url("/images/wave-background.svg");
+  background-image: url("../images/svg/wave-background.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
