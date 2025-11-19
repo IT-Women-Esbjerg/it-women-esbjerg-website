@@ -1,14 +1,14 @@
 <section class="mb-32 px-2 md:px-4 lg:px-6">
     <div class="flex gap-4 items-center mb-8">
         <div class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 relative flex items-center justify-center">
-            <svg class="absolute inset-0 w-full h-full text-dark-pink">
+            <svg class="absolute inset-0 w-full h-full text-primary">
                 <use href="#icon-backdrop" />
             </svg>
-            <svg class="relative z-10 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-beige">
+            <svg class="relative z-10 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-background">
                 <use href="#calendar-icon" />
             </svg>
         </div>
-        <h2 class="text-2xl md:text-3xl lg:text-4xl text-dark-pink font-semibold">Upcoming Events</h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl text-primary font-semibold">Upcoming Events</h2>
     </div>
 
 
@@ -24,12 +24,12 @@
             <div class="flex flex-col">
                 {{ range first 3 (where site.RegularPages "Section" "events").ByDate }}
                 <a href="{{ .Permalink }}"
-                    class="flex justify-between items-center py-2 border-b border-light-pink last:border-b-0 hover:bg-white/50 transition-colors">
-                    <span class="text-dark-pink font-medium text-sm md:text-base whitespace-nowrap">{{ .Date.Format
+                    class="flex justify-between items-center py-2 border-b border-secondary last:border-b-0 hover:bg-white/50 transition-colors">
+                    <span class="text-primary font-medium text-sm md:text-base whitespace-nowrap">{{ .Date.Format
                         "Mon, Jan 2" }}
                     </span>
-                    <span class="text-dark-pink flex-1 px-4 md:px-8">{{ .Title }}</span>
-                    <span class="text-dark-pink font-medium text-sm md:text-base">{{ .Params.time }}</span>
+                    <span class="text-primary flex-1 px-4 md:px-8">{{ .Title }}</span>
+                    <span class="text-primary font-medium text-sm md:text-base">{{ .Params.time }}</span>
                 </a>
                 {{ end }}
             </div>

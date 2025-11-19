@@ -1,9 +1,9 @@
-<footer class="bg-dark-pink text-white px-2 md:px-4 lg:px-6 py-6">
+<footer class="bg-primary text-white px-2 md:px-4 lg:px-6 py-6">
     <div class="flex justify-between items-start">
 
-        <!-- Logo TODO: get svg -->
-        <img class="max-w-32 sm:max-w-48 md:max-w-32 lg:max-w-3xs h-auto object-contain invert" src="/images/logo.png"
-            alt="Logo">
+        <svg class="max-w-32 md:max-w-48 lg:max-w-3xs">
+            <use xlink:href="#logo-horizontal" />
+        </svg>
 
         <!-- Contact -->
         <ul class="flex flex-col">
@@ -41,12 +41,12 @@
             </p>
             <div class="flex gap-4 lg:gap-8">
                 <input type="email" name="email" placeholder="Your email address" required
-                    class="flex-1 sm:max-w-md px-4 py-3 rounded-md border-2 border-white bg-white text-dark-pink placeholder-dark-pink/70 focus:outline-none focus:border-dark-pink">
+                    class="flex-1 sm:max-w-md px-4 py-3 rounded-md border-2 border-white bg-white text-primary placeholder-primary/70 focus:outline-none focus:border-primary">
                 <button type="submit"
-                    class="bg-light-pink font-semibold rounded-md px-6 py-3 hover:bg-opacity-90 transition-all whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed">Subscribe</button>
+                    class="bg-secondary font-semibold rounded-md px-6 py-3 hover:bg-opacity-90 transition-all whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed">Subscribe</button>
             </div>
             <div class="flex gap-2 lg:gap-4 items-start">
-                <input id="newsletter-consent" name="consent" type="checkbox" required class="mt-1 accent-light-pink">
+                <input id="newsletter-consent" name="consent" type="checkbox" required class="mt-1 accent-secondary">
                 <label for="newsletter-consent">
                     I agree to receive updates from IT Women Esbjerg.
                 </label>

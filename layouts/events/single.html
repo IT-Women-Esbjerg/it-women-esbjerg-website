@@ -2,40 +2,40 @@
 <article class="max-w-4xl mx-auto">
     <!-- Event Header -->
     <div class="mb-8">
-        <h1 class="text-4xl md:text-5xl text-dark-pink font-bold mb-4">{{ .Title }}</h1>
+        <h1 class="text-4xl md:text-5xl text-primary font-bold mb-4">{{ .Title }}</h1>
 
         <!-- Event Metadata -->
         <div class="flex flex-wrap gap-6 text-lg">
             <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-dark-pink" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span class="text-dark-pink font-medium">{{ .Date.Format "Monday, January 2, 2006" }}</span>
+                <span class="text-primary font-medium">{{ .Date.Format "Monday, January 2, 2006" }}</span>
             </div>
 
             {{ with .Params.time }}
             <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-dark-pink" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span class="text-dark-pink font-medium">{{ . }}</span>
+                <span class="text-primary font-medium">{{ . }}</span>
             </div>
             {{ end }}
 
             {{ with .Params.location }}
             <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-dark-pink" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                <svg class="w-5 h-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span class="text-dark-pink font-medium">{{ . }}</span>
+                <span class="text-primary font-medium">{{ . }}</span>
             </div>
             {{ end }}
         </div>
@@ -48,7 +48,7 @@
 
     <!-- Back Button -->
     <div class="mt-12">
-        <a href="/events" class="inline-flex items-center gap-2 text-dark-pink hover:text-light-pink font-semibold">
+        <a href="/events" class="inline-flex items-center gap-2 text-primary hover:text-secondary font-semibold">
             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
