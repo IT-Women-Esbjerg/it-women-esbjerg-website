@@ -1,20 +1,20 @@
 +++
-date = '2025-11-16T15:36:44+01:00'
+date = '2025-11-25T20:52:33+01:00'
 draft = true
 title = 'Christmas Hygge'
-time = '16:30-18:00'
-location = ''
-description = ''
+event_start = '2025-12-07T14:00:00+01:00'
+event_end = '2025-12-07T18:00:00+01:00'
+location = 'Kaffeesmeden'
+
+[[images]]
+url = "https://media.licdn.com/dms/image/v2/..."
+alt = "Event photo 1"
+
+[[images]]
+url = "https://media.licdn.com/dms/image/v2/..."
+alt = "Event photo 2"
 +++
-
-# Christmas Hygge
-
-## Event Details
-
-**Date:** Sunday, November 16, 2025  
-**Time:** 16:30-18:00
-**Location:** EASV
 
 ## Description
 
-Write event description here...
+[Write event description here...]

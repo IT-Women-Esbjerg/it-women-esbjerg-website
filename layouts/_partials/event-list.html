@@ -1,0 +1,14 @@
+<div class="p-6 md:p-8">
+    {{ $events := sort (where .Site.RegularPages "Section" "events") "Params.event_start" "asc" }}
+    {{ range $events }}
+    <a href="{{ .Permalink }}"
+        class="flex justify-between items-center py-4 border-b border-secondary last:border-b-0 hover:bg-white/50 transition-colors rounded px-4 -mx-4">
+        <div class="text-primary font-medium text-sm md:text-base whitespace-nowrap">
+            {{ with .Params.event_start }} {{ dateFormat "Mon, Jan 2" . }} {{ end }}
+        </div>
+        <div class="text-primary flex-1 px-4 md:px-8">{{ .Title }}</div>
+        <div class="text-primary font-medium text-sm md:text-base">{{ with .Params.event_start }} {{ dateFormat "15:04"
+            . }} {{ end }}</div>
+    </a>
+    {{ end }}
+</div>

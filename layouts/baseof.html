@@ -13,18 +13,18 @@
     {{ end }}
 </head>
 
-<body class="bg-background mx-auto max-w-7xl text-accent">
+<body class="flex flex-col bg-background mx-auto max-w-7xl text-accent min-h-screen">
 
     {{ partial "header.html" . }}
     {{ partial "svg.html" . }}
-    <main>
+    <main class="grow">
         {{ block "main" . }}{{ end }}
     </main>
 
     {{ partial "footer.html" .}}
 
-    <script src="{{ "js/script.js" | relURL }}" type="text/javascript"></script>
-    <script src="{{ "js/gallery.js" | relURL }}" type="text/javascript"></script>
+    <script src="{{ "js/script.js" | urlize | relURL}}" type="text/javascript"></script>
+    <script src="{{ "js/gallery.js" | urlize | relURL}}" type="text/javascript"></script>
 </body>
 
 </html>

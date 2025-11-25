@@ -10,8 +10,8 @@
                         <use href="#calendar-icon" />
                     </svg>
                     <span class="text-primary font-medium">
-                        {{ with $.Params.event_start }} {{ dateFormat "Mon, Jan 2, 2006, 3:04 PM" . }} {{ end }}
-                        {{ with $.Params.event_end }} - {{ dateFormat "3:04 PM" . }}{{ end }}
+                        {{ with $.Params.event_start }} {{ dateFormat "Mon, Jan 2, 2006, 15:04" . }} {{ end }}
+                        {{ with $.Params.event_end }} - {{ dateFormat "15:04" . }}{{ end }}
                     </span>
                 </div>
 

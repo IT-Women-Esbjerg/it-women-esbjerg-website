@@ -21,18 +21,7 @@
             </div>
 
             <!-- Upcoming Events List -->
-            <div class="flex flex-col">
-                {{ range first 3 (where site.RegularPages "Section" "events").ByDate }}
-                <a href="{{ .Permalink }}"
-                    class="flex justify-between items-center py-2 border-b border-secondary last:border-b-0 hover:bg-white/50 transition-colors">
-                    <span class="text-primary font-medium text-sm md:text-base whitespace-nowrap">{{ .Date.Format
-                        "Mon, Jan 2" }}
-                    </span>
-                    <span class="text-primary flex-1 px-4 md:px-8">{{ .Title }}</span>
-                    <span class="text-primary font-medium text-sm md:text-base">{{ .Params.time }}</span>
-                </a>
-                {{ end }}
-            </div>
+            {{ partial "event-list.html" . }}
         </div>
     </div>
 </section>
