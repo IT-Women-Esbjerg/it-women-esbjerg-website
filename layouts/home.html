@@ -1,10 +1,9 @@
 {{ define "main" }}
 {{ .Content }}
 
-{{ template "home/hero.html" . }}
-{{ template "home/upcoming-events.html" . }}
-{{ template "home/newsletter.html" . }}
-{{ template "home/gallery.html" . }}
-
+<article class="mt-32">
+    {{ template "home/hero.html" . }} {{ template "home/upcoming-events.html" . }} {{ template "home/newsletter.html"
+    . }} {{ template "home/gallery.html" . }}
+</article>
 
 {{ end }}

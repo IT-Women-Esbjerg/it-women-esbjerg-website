@@ -2,9 +2,9 @@
 date = '{{ .Date }}'
 draft = true
 title = '{{ replace .File.ContentBaseName "-" " " | title }}'
-time = '16:30-18:00'
-location = ''
-description = ''
+event_start = '{{ .Date }}' # don't forget to adjust
+event_end = '{{ .Date }}' # don't forget to adjust
+location = '' # add location
 
 [[images]]
 url = "https://media.licdn.com/dms/image/v2/..."
@@ -15,18 +15,6 @@ url = "https://media.licdn.com/dms/image/v2/..."
 alt = "Event photo 2"
 +++
 
-# {{ replace .File.ContentBaseName "-" " " | title }}
-
-## Event Details
-
-**Date:** {{ dateFormat "Monday, January 2, 2006" .Date }}  
-**Time:** [TIME]  
-**Location:** [LOCATION]
-
 ## Description
 
-[Write event description here]
-
-## Photos
-
-Write event recap here...
+[Write event description here...]

@@ -1,10 +1,10 @@
 +++
 date = '2025-11-19T20:56:23+01:00'
-draft = true
-title = '2025 11 Linked in Workshop'
-time = '16:30-18:00'
-location = ''
-description = ''
+draft = false
+title = 'Linked in Workshop'
+event_start = 2025-11-13T17:00:00+01:00
+event_end = 2025-11-13T19:00:00+01:00
+location = 'Erhvervsakademi Sydvest, Spangsbjerg Kirkevej 103, Esbjerg, Syddanmark, DK, 6700'
 
 [[images]]
 url = "https://media.licdn.com/dms/image/v2/D4D22AQHPcVLrd-8uFw/feedshare-shrink_1280/B4DZqDZj.aIgAs-/0/1763141109146?e=1765411200&v=beta&t=di1LAxQwWyaJJyq73yymlHmmKMY5AwQwzkSmaMHFuHE"
@@ -23,18 +23,17 @@ url = "https://media.licdn.com/dms/image/v2/D4D22AQHIO2i9nQtmKQ/feedshare-shrink
 alt = "Event photo 4"
 +++
 
-# 2025 11 Linked in Workshop
-
-## Event Details
-
-**Date:** Wednesday, November 19, 2025  
-**Time:** [TIME]  
-**Location:** [LOCATION]
-
 ## Description
 
-[Write event description here]
+Ready to elevate your professional brand and make new connections? Don't miss this opportunity to learn how to boost your LinkedIn profile and get great career tips from our guest speaker!
 
-## Photos
+This hands-on workshop is organized in collaboration with IT Women Esbjerg, HK, and hosted by EASV Esbjerg. It will be held in English!
 
-Write event recap here...
+💬 What to bring:
+
+- Your laptop (it's a hands-on workshop!)
+- Your questions about LinkedIn and your career!
+
+Join us for a practical session that will help you enhance your online presence and take the next step in your career! Everyone is welcome! 💡
+
+Graphis by: [Sara Escallón](https://www.linkedin.com/in/sara-escallon/)
