@@ -1,4 +1,4 @@
-<div class="p-6 md:p-8">
+<div class="p-6 md:p-8 w-full">
     {{ $events := sort (where .Site.RegularPages "Section" "events") "Params.event_start" "asc" }}
     {{ range $events }}
     <a href="{{ .Permalink }}"
