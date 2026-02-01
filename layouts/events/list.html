@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <!-- Hero Section -->
-<article class="mt-32">
+<article class="my-32">
 	<section class="flex justify-between items-center mb-16 px-2 md:px-4 lg:px-6">
 		<div class="flex-2 flex flex-col gap-5">
 			<h1 class="text-4xl md:text-5xl lg:text-6xl uppercase font-extrabold">
@@ -42,22 +42,68 @@
 	</section>
 
 	<!-- All Events -->
-	<section class="mx-auto max-w-2xl">
-		<!-- Page Header
-	<div class="flex gap-4 items-center mb-8">
-		<div class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 relative flex items-center justify-center">
-			<svg class="absolute inset-0 w-full h-full text-primary">
-				<use href="#icon-backdrop" />
-			</svg>
-			<svg class="relative z-10 w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-background">
-				<use href="#calendar-icon" />
-			</svg>
-		</div>
-		<h1 class="text-3xl md:text-4xl lg:text-5xl text-primary font-bold">All Events</h1>
-	</div> -->
-
+	<section class="flex flex-col items-center">
 		<!-- Events List -->
-		{{ partial "event-list.html" . }}
+		<div class="w-2/3">
+			{{ partial "event-list.html" . }}
+		</div>
+
+		<!-- Past Event Previews -->
+		<ul class="mt-16 flex flex-col gap-12 w-full px-16">
+			<!-- Fetch and sort past events by event_start date in descending order -->
+			{{ $events := sort (where .Site.RegularPages "Section" "events") "Params.event_start" "asc" }}
+			{{ range $events }}
+			<li class="flex flex-col gap-4">
+				<div class="flex w-full gap-4">
+					<div class="flex flex-col">
+						<a href="{{ .Permalink }}" class="flex flex-col">
+							<p class="text-primary">
+								{{ with .Params.event_start }} {{ dateFormat "2 Jan 2006" . }} {{ end }}
+							</p>
+							<h3 class="text-4xl font-semibold mb-4">{{ .Title }}</h3>
+						</a>
+						<p>
+							{{/* TODO {{ with .Params.description }}{{ . }}{{ end }} */}}
+							We know that linkedin nowadays is very important, so have a good profile is essential to be
+							in the market. This day we learn that the 87% of the companies find our profile before the
+							interview, and have a good picture or a highlight headline is really important to be the
+							best candidate.
+						</p>
+					</div>
+					<!-- Display the first image from the event's images parameter -->
+					{{ with index .Params.images 0 }}
+					<div class="flex flex-col">
+						<img src="{{ .url }}" alt="{{ $.Title }}"
+							class="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 object-cover rounded-lg ml-8"
+							loading="lazy" />
+					</div>
+				</div>
+
+				<div>
+					<h4 class="text-2xl font-semibold mb-4">Main Takeaways</h4>
+					<ul class="flex flex-wrap gap-4 w-full">
+						<li class="bg-background-alt p-4 rounded-lg max-w-2xs">Be yourself. Find a good headline that
+							tell to the
+							world who are
+							you
+						</li>
+						<li class="bg-background-alt p-4 rounded-lg max-w-2xs">Be yourself. Find a good headline that
+							tell to the
+							world who are
+							you
+						</li>
+						<li class="bg-background-alt p-4 rounded-lg max-w-2xs">Be yourself. Find a good headline that
+							tell to the
+							world who are
+							you
+						</li>
+					</ul>
+
+				</div>
+				{{ end }}
+			</li>
+			{{ end }}
+		</ul>
 
 	</section>
 </article>

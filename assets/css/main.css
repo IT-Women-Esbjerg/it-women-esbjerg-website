@@ -7,6 +7,7 @@
   --color-accent: #0b1956;
   --color-primary: #f13492;
   --color-secondary: #f3b5c5;
+  --color-background-alt: #faf6ef;
 
   --font-sans: "Poppins", sans-serif;
 }
@@ -30,7 +31,7 @@
 .fc .fc-button-primary {
   background-color: transparent;
   border: none;
-  color: #0b1956;
+  color: var(--color-accent);
   padding: 0.25rem;
 }
 
@@ -106,7 +107,7 @@
 /* Event day styling - pink circle */
 .fc .fc-daygrid-day.fc-day-has-event .fc-daygrid-day-number {
   background-color: var(--color-primary);
-  color: white;
+  color: var(--color-background-alt);
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
