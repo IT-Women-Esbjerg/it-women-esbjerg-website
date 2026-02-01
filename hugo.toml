@@ -1,4 +1,6 @@
 baseURL = 'https://it-women-esbjerg.github.io/it-women-esbjerg-website/'
+relativeURLs = true
+canonifyURLs = true
 languageCode = 'en-us'
 title = 'IT Women Esbjerg'
 
