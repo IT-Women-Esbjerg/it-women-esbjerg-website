@@ -40,6 +40,27 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             return dayEvents.length > 0 ? ['fc-day-has-event'] : [];
         },
+        dayCellDidMount: function(info) {
+            // Add click handler to days with events
+            const dayEvents = events.filter(event => {
+                const eventDate = new Date(event.start);
+                return eventDate.toDateString() === info.date.toDateString();
+            });
+            
+            if (dayEvents.length > 0) {
+                info.el.style.cursor = 'pointer';
+                // Add title attribute for hover tooltip
+                const titles = dayEvents.map(e => e.title).join(', ');
+                info.el.title = titles;
+                
+                info.el.addEventListener('click', function() {
+                    // Redirect to the first event on this day
+                    if (dayEvents[0].url) {
+                        window.location.href = dayEvents[0].url;
+                    }
+                });
+            }
+        },
         eventClick: function (info) {
             info.jsEvent.preventDefault();
             console.log('Event clicked:', info.event.title);
