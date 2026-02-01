@@ -5,6 +5,13 @@ title = 'Linked in Workshop'
 event_start = 2025-11-13T17:00:00+01:00
 event_end = 2025-11-13T19:00:00+01:00
 location = 'Erhvervsakademi Sydvest, Spangsbjerg Kirkevej 103, Esbjerg, Syddanmark, DK, 6700'
+summary = 'We know that linkedin nowadays is very important, so have a good profile is essential to be in the market. This day we learn that the 87% of the companies find our profile before the interview, and have a good picture or a highlight headline is really important to be the best candidate.'
+
+takeaways = [
+    "Key insight or memory from the event",
+    "Another important takeaway",
+    "A memorable moment or lesson learned"
+]
 
 [[images]]
 url = "https://media.licdn.com/dms/image/v2/D4D22AQHPcVLrd-8uFw/feedshare-shrink_1280/B4DZqDZj.aIgAs-/0/1763141109146?e=1765411200&v=beta&t=di1LAxQwWyaJJyq73yymlHmmKMY5AwQwzkSmaMHFuHE"
