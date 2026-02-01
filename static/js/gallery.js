@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const escapedImagesText = document.getElementById('gallery-data').textContent;
+    const galleryDataElement = document.getElementById('gallery-data');
+    if (!galleryDataElement) {
+        // No gallery data on this page, skip gallery initialization
+        return;
+    }
+
+    const escapedImagesText = galleryDataElement.textContent;
     const imagesText = JSON.parse(escapedImagesText);
     const images = JSON.parse(imagesText);
     let start = 0;

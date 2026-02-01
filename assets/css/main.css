@@ -17,3 +17,115 @@
   background-size: cover;
   background-position: center center;
 }
+
+/* FullCalendar custom styling */
+
+/* Hide toolbar buttons and only show navigation arrows */
+.fc .fc-toolbar-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.fc .fc-button-primary {
+  background-color: transparent;
+  border: none;
+  color: #0b1956;
+  padding: 0.25rem;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.fc .fc-button-primary:focus {
+  box-shadow: none;
+}
+
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+/* Remove all borders */
+.fc-theme-standard .fc-scrollgrid {
+  border: none;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border: none;
+}
+
+/* Day headers styling */
+.fc .fc-col-header-cell {
+  padding: 0.5rem 0;
+}
+
+.fc .fc-col-header-cell-cushion {
+  color: #999;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* Day numbers styling */
+.fc .fc-daygrid-day-number {
+  color: var(--color-accent);
+  font-weight: 500;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+
+.fc .fc-daygrid-day-frame {
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Today highlight */
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: transparent;
+}
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Event day styling - pink circle */
+.fc .fc-daygrid-day.fc-day-has-event .fc-daygrid-day-number {
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Hide the event dots/blocks */
+.fc-daygrid-event {
+  display: none;
+}
+
+.fc-daygrid-event-harness {
+  display: none;
+}
+
+/* Other month days - lighter color */
+.fc .fc-day-other .fc-daygrid-day-number {
+  color: #ccc;
+}
