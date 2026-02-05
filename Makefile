@@ -1,4 +1,4 @@
-.PHONY: run-dev
+.PHONY: dev
 
-run-dev:
+dev:
 	hugo server -D --config config.development.toml
