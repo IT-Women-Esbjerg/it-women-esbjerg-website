@@ -35,15 +35,15 @@
         </ul>
 
         <!-- Newsletter subscription form -->
-        <form class="hidden md:flex flex-col gap-1 lg:gap-2 max-w-sm lg:max-w-md text-white">
+        <form id="newsletter-form" class="hidden md:flex flex-col gap-1 lg:gap-2 max-w-sm lg:max-w-md text-white">
             <p class="text-white">Subscribe to our fantastic newsletter and be updated about all
                 the events that are coming
             </p>
             <div class="flex gap-4 lg:gap-8">
-                <input type="email" name="email" placeholder="Your email address" required
+                <input id="newsletter-email" type="email" name="email" placeholder="Your email address" required
                     class="flex-1 sm:max-w-md px-4 py-3 rounded-md border-2 border-white bg-white text-primary placeholder-primary/70 focus:outline-none focus:border-primary">
-                <button type="submit"
-                    class="bg-secondary font-semibold rounded-md px-6 py-3 hover:bg-opacity-90 transition-all whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed">Subscribe</button>
+                <button id="newsletter-submit" type="submit" disabled
+                    class="bg-secondary font-semibold rounded-md px-6 py-3 cursor-pointer hover:bg-opacity-90 transition-all whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed">Subscribe</button>
             </div>
             <div class="flex gap-2 lg:gap-4 items-start">
                 <input id="newsletter-consent" name="consent" type="checkbox" required class="mt-1 accent-secondary">
