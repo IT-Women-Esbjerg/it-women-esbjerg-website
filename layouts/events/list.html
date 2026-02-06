@@ -23,24 +23,18 @@
         </p>
       </div>
       <div class="flex gap-4 md:gap-8">
-        <a
-          href="/events"
-          class="bg-accent text-white font-semibold px-1.5 py-1.5 md:px-4 md:py-2.5 rounded"
-          >See the next event</a
-        >
+        <a href="/events" class="bg-accent text-white font-semibold px-1.5 py-1.5 md:px-4 md:py-2.5 rounded">See the
+          next event</a>
       </div>
     </div>
     <div
-      class="hidden sm:flex relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 items-center justify-center"
-    >
+      class="hidden sm:flex relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 items-center justify-center">
       <!-- Backdrop -->
       <svg class="absolute inset-0 w-full h-full z-0 text-primary -scale-x-100">
         <use href="#hero-backdrop" />
       </svg>
       <!-- Hero image -->
-      <svg
-        class="text-background z-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48"
-      >
+      <svg class="text-background z-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
         <use href="#calendar-icon" />
       </svg>
     </div>
@@ -54,13 +48,21 @@
     <!-- Past Event Previews -->
     <ul class="mt-16 flex flex-col gap-12 w-full px-16">
       <!-- Fetch and sort past events by event_start date in descending order -->
-      {{ $events := sort (where .Site.RegularPages "Section" "events")
-      "Params.event_start" "asc" }} {{ range $index, $event := $events }}
+      {{ $now := now }}
+      {{ $allEvents := where .Site.RegularPages "Section" "events"}}
+      {{ $sortedEvents := sort $allEvents "Params.event_start" "desc" }}
+      {{ $pastEvents := slice }}
+      {{ range $sortedEvents }}
+      {{ if .Params.event_start }}
+      {{ if lt (time .Params.event_start).Unix $now.Unix }}
+      {{ $pastEvents = $pastEvents | append . }}
+      {{ end }}
+      {{ end }}
+      {{ end }}
+      {{ range $index, $event := $pastEvents }}
       <li class="flex flex-col gap-4">
         <!-- Alternate layout for even and odd indexed events (text left, image right and vice versa) -->
-        <div
-          class="flex flex-col md:flex-row w-full gap-4 {{ if mod $index 2 }}md:flex-row-reverse{{ end }}"
-        >
+        <div class="flex flex-col md:flex-row w-full gap-4 {{ if mod $index 2 }}md:flex-row-reverse{{ end }}">
           <div class="flex flex-col md:w-2/3">
             <a href="{{ .Permalink }}" class="flex flex-col">
               <p class="text-primary">
@@ -74,12 +76,8 @@
           <!-- Display the first image from the event's images parameter -->
           {{ with index .Params.images 0 }}
           <div class="flex flex-col md:w-1/3">
-            <img
-              src="{{ .url }}"
-              alt="{{ $.Title }}"
-              class="object-cover rounded-lg {{ if mod $index 2 }}mr-8{{ else }}ml-8{{ end }}"
-              loading="lazy"
-            />
+            <img src="{{ .url }}" alt="{{ $.Title }}"
+              class="object-cover rounded-lg {{ if mod $index 2 }}mr-8{{ else }}ml-8{{ end }}" loading="lazy" />
           </div>
           {{ end }}
         </div>
