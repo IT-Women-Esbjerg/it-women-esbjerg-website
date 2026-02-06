@@ -1,0 +1,96 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.2.6">
+  <diagram name="Page-1" id="1vx-XH56I9GVvq8Qf2ev">
+    <mxGraphModel dx="1315" dy="1087" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-4" edge="1" parent="1" source="e7-rpHCfFO1RXb-92_D_-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="e7-rpHCfFO1RXb-92_D_-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-5" connectable="0" parent="e7-rpHCfFO1RXb-92_D_-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fills out a form" vertex="1">
+          <mxGeometry relative="1" x="0.1027" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-1" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.user_feedback_02;" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Admin Team" vertex="1">
+          <mxGeometry height="50.099999999999994" width="43.199999999999996" x="140" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-3" parent="1" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;outlineConnect=0;verticalAlign=top;align=center;shape=mxgraph.office.clouds.cloud_sharepoint;" value="Google Forms / &lt;br&gt;CMS (like Decap CMS or TinaCMS)" vertex="1">
+          <mxGeometry height="61" width="101" x="111.1" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-6" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.image_recognition;" value="&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Cloudinary" vertex="1">
+          <mxGeometry height="47.7" width="48.9" x="340" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-9" edge="1" parent="1" source="e7-rpHCfFO1RXb-92_D_-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.039;entryY=0.519;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" target="e7-rpHCfFO1RXb-92_D_-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-10" connectable="0" parent="e7-rpHCfFO1RXb-92_D_-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Uploads pictures&lt;div&gt;to&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4029" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-12" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/preview/Static_Apps.svg;" value="" vertex="1">
+          <mxGeometry height="54" width="68" x="58.59999999999988" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-17" edge="1" parent="1" source="e7-rpHCfFO1RXb-92_D_-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="e7-rpHCfFO1RXb-92_D_-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-18" connectable="0" parent="e7-rpHCfFO1RXb-92_D_-17" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Triggers a pipeline&lt;div&gt;(repository_dispatch)&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1634" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-13" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/power_platform/PowerApps.svg;" value="" vertex="1">
+          <mxGeometry height="65.16" width="68" x="127.60000000000002" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.509;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;" target="e7-rpHCfFO1RXb-92_D_-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="161.18333333333348" y="240.00000000000023" as="sourcePoint" />
+            <mxPoint x="161.94799999999995" y="398.4135600000002" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-15" connectable="0" parent="e7-rpHCfFO1RXb-92_D_-14" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Triggers a script&lt;div&gt;(Google Apps) /&lt;/div&gt;&lt;div&gt;Webhook&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.0958" y="-1" as="geometry">
+            <mxPoint y="14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-23" edge="1" parent="1" source="e7-rpHCfFO1RXb-92_D_-16" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="e7-rpHCfFO1RXb-92_D_-19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-25" edge="1" parent="1" source="e7-rpHCfFO1RXb-92_D_-16" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="e7-rpHCfFO1RXb-92_D_-24" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-16" parent="1" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://icons.diagrams.net/icon-cache1/Ionicons-2627/icon-social-github-1402.svg" value="GithubActions" vertex="1">
+          <mxGeometry height="70" width="70" x="126.6" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-19" parent="1" style="whiteSpace=wrap;html=1;verticalAlign=top;labelBackgroundColor=#ffffff;" value="&lt;span style=&quot;font-size: 11px; text-wrap-mode: nowrap;&quot;&gt;Crates a new&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 11px; text-wrap-mode: nowrap;&quot;&gt;event&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: light-dark(rgb(255, 255, 255), rgb(18, 18, 18)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 11px; text-wrap-mode: nowrap;&quot;&gt;markdown&lt;/span&gt;&lt;div&gt;&lt;div&gt;&lt;div style=&quot;font-size: 11px; text-wrap-mode: nowrap;&quot;&gt;file in the events/ folder&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="30" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-24" parent="1" style="whiteSpace=wrap;html=1;verticalAlign=top;labelBackgroundColor=#ffffff;" value="Triggers Brevo to send out&amp;nbsp;&lt;div&gt;notifications&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="183.20000000000005" y="740" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-30" edge="1" parent="1" source="e7-rpHCfFO1RXb-92_D_-19" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.441;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="e7-rpHCfFO1RXb-92_D_-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-32" connectable="0" parent="e7-rpHCfFO1RXb-92_D_-30" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;&lt;font&gt;Publishes a new&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;&lt;font&gt;version of the&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;&lt;font&gt;page&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0486" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-34" edge="1" parent="1" source="e7-rpHCfFO1RXb-92_D_-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.955;entryY=0.502;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" target="e7-rpHCfFO1RXb-92_D_-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="967" />
+              <mxPoint x="400" y="214" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7-rpHCfFO1RXb-92_D_-35" connectable="0" parent="e7-rpHCfFO1RXb-92_D_-34" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fetches images&lt;div&gt;to display from&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.331" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
