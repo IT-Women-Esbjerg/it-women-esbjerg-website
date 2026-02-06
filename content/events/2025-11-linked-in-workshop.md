@@ -14,19 +14,19 @@ takeaways = [
 ]
 
 [[images]]
-url = "https://media.licdn.com/dms/image/v2/D4D22AQHPcVLrd-8uFw/feedshare-shrink_1280/B4DZqDZj.aIgAs-/0/1763141109146?e=1765411200&v=beta&t=di1LAxQwWyaJJyq73yymlHmmKMY5AwQwzkSmaMHFuHE"
+url = "https://res.cloudinary.com/dnwahijsm/image/upload/v1770392245/IMG_1330_g6gczx_jgxhme.jpg"
 alt = "Event photo 1"
 
 [[images]]
-url = "https://media.licdn.com/dms/image/v2/D4D22AQFAp7aGer2UUA/feedshare-shrink_1280/B4DZqDZkCmH4As-/0/1763141120709?e=1765411200&v=beta&t=lYNzrBZTKkXTuQKszP7itUpGHZZxckQvoUxPmkaVMhY"
+url = "https://res.cloudinary.com/dnwahijsm/image/upload/v1770392246/IMG_0450_f5bzee_fc6gef.jpg"
 alt = "Event photo 2"
 
 [[images]]
-url = "https://media.licdn.com/dms/image/v2/D4D22AQFd6IKLeecx5A/feedshare-shrink_1280/B4DZqDZj_AJIAs-/0/1763141109591?e=1765411200&v=beta&t=ixe_jMWo8UJ8Xzlwueadu7oi6zGidqLxNOYsCrjXUtM"
+url = "https://res.cloudinary.com/dnwahijsm/image/upload/v1770392245/IMG_1348_fsg5ww_rhuuuu.jpg"
 alt = "Event photo 3"
 
 [[images]]
-url = "https://media.licdn.com/dms/image/v2/D4D22AQHIO2i9nQtmKQ/feedshare-shrink_1280/B4DZqDZkBXKIAs-/0/1763141119880?e=1765411200&v=beta&t=3Sjklnrd3fHSxXQ-gJUDYLXnPohFmeO65PduQCwC3lo"
+url = "https://res.cloudinary.com/dnwahijsm/image/upload/v1770392244/IMG_1298_oie7yp_gczj5p.jpg"
 alt = "Event photo 4"
 +++
 
