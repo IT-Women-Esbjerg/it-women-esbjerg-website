@@ -5,12 +5,12 @@ title = 'Linked in Workshop'
 event_start = 2025-11-13T17:00:00+01:00
 event_end = 2025-11-13T19:00:00+01:00
 location = 'Erhvervsakademi Sydvest, Spangsbjerg Kirkevej 103, Esbjerg, Syddanmark, DK, 6700'
-summary = 'We know that linkedin nowadays is very important, so have a good profile is essential to be in the market. This day we learn that the 87% of the companies find our profile before the interview, and have a good picture or a highlight headline is really important to be the best candidate.'
+summary = 'This hands-on workshop gave us practical tools and new confidence to improve our LinkedIn profiles and professional presence. We learned how small changes, like a strong headline or reaching out to new connections, can make a big difference. It was inspiring to see everyone share their experiences, support each other, and leave with fresh motivation for the next step in their careers.'
 
 takeaways = [
-    "Key insight or memory from the event",
-    "Another important takeaway",
-    "A memorable moment or lesson learned"
+    "𝗥𝗲𝗮𝗰𝗵 𝗼𝘂𝘁 𝘁𝗼 𝗽𝗲𝗼𝗽𝗹𝗲 𝘄𝗵𝗼 𝗶𝗻𝘀𝗽𝗶𝗿𝗲 𝘆𝗼𝘂: Try reaching out to people in companies you’d love to work for or in roles you'd love to have. If you reach out in the right way, they might be able to help you with a roadmap to your dream job.",
+    " 𝗟𝗲𝗮𝘃𝗲 𝗶𝗺𝗽𝗼𝘀𝘁𝗲𝗿 𝘀𝘆𝗻𝗱𝗿𝗼𝗺𝗲 𝗮𝘁 𝘁𝗵𝗲 𝗱𝗼𝗼𝗿: It might feel strange to highlight your accomplishments, but your profile is exactly the place to do it. When future employers look at your page, they should see your experience, skills, and potential.",
+    "𝗜𝗻𝗰𝗿𝗲𝗮𝘀𝗲 𝘆𝗼𝘂𝗿 𝘃𝗶𝘀𝗶𝗯𝗶𝗹𝗶𝘁𝘆 𝘁𝗼 𝗿𝗲𝗰𝗿𝘂𝗶𝘁𝗲𝗿𝘀: LinkedIn has profile frames you can add, including the hashtag#opentowork frame. It shows you’re actively looking, and you can choose to make it visible publicly or only to recruiters."
 ]
 
 [[images]]
