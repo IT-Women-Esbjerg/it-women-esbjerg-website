@@ -9,7 +9,8 @@ read -e -i "$default_location" -p "Location: " location
 
 # User-friendly date/time input
 read -p "Event start (DD-MM-YYYY HH:MM): " event_start_human
-read -p "Event end (DD-MM-YYYY HH:MM): " event_end_human
+event_start_date=$(echo "$event_start_human" | awk '{print $1}')
+read -e -i "$event_start_date " -p "Event end (DD-MM-YYYY HH:MM): " event_end_human
 
 # Convert DD-MM-YYYY HH:MM to YYYY-MM-DD HH:MM for date -d
 event_start_iso=$(echo "$event_start_human" | awk -F'[- :]' '{printf "%04d-%02d-%02d %02d:%02d", $3, $2, $1, $4, $5}')

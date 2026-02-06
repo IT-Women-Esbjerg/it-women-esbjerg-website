@@ -8,19 +8,11 @@ location = '' # add location
 summary = '' # Short 1-2 sentence summary/sentiment about the event (optional)
 
 # Takeaways/memories from the event (optional)
-takeaways = [
-    "Key insight or memory from the event",
-    "Another important takeaway",
-    "A memorable moment or lesson learned"
-]
+takeaways = []
 
 [[images]]
 url = "https://media.licdn.com/dms/image/v2/..."
 alt = "Event photo 1"
-
-[[images]]
-url = "https://media.licdn.com/dms/image/v2/..."
-alt = "Event photo 2"
 +++
 
 ## Description
