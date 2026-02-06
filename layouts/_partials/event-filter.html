@@ -1,0 +1,22 @@
+{{/* Usage: partial "event-filter.html" (dict "context" . "type" "future") */}}
+{{ $type := .type }}
+{{ $context := .context }}
+{{ $now := now }}
+{{ $allEvents := where $context.Site.RegularPages "Section" "events" }}
+{{ $sortDir := cond (eq $type "future") "asc" "desc" }}
+{{ $sortedEvents := sort $allEvents "Params.event_start" $sortDir }}
+{{ $events := slice }}
+{{ range $sortedEvents }}
+{{ if .Params.event_start }}
+{{ if eq $type "future" }}
+{{ if ge (time .Params.event_start).Unix $now.Unix }}
+{{ $events = $events | append . }}
+{{ end }}
+{{ else if eq $type "past" }}
+{{ if lt (time .Params.event_start).Unix $now.Unix }}
+{{ $events = $events | append . }}
+{{ end }}
+{{ end }}
+{{ end }}
+{{ end }}
+{{ return $events }}

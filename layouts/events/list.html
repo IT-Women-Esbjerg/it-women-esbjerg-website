@@ -48,17 +48,7 @@
     <!-- Past Event Previews -->
     <ul class="mt-16 flex flex-col gap-12 w-full px-16">
       <!-- Fetch and sort past events by event_start date in descending order -->
-      {{ $now := now }}
-      {{ $allEvents := where .Site.RegularPages "Section" "events"}}
-      {{ $sortedEvents := sort $allEvents "Params.event_start" "desc" }}
-      {{ $pastEvents := slice }}
-      {{ range $sortedEvents }}
-      {{ if .Params.event_start }}
-      {{ if lt (time .Params.event_start).Unix $now.Unix }}
-      {{ $pastEvents = $pastEvents | append . }}
-      {{ end }}
-      {{ end }}
-      {{ end }}
+      {{ $pastEvents := partial "event-filter.html" (dict "context" . "type" "past") }}
       {{ range $index, $event := $pastEvents }}
       <li class="flex flex-col gap-4">
         <!-- Alternate layout for even and odd indexed events (text left, image right and vice versa) -->

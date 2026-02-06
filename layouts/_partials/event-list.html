@@ -1,15 +1,5 @@
 <div class="p-6 md:p-8 w-full">
-    {{ $now := now }}
-    {{ $allEvents := where .Site.RegularPages "Section" "events"}}
-    {{ $sortedEvents := sort $allEvents "Params.event_start" "asc" }}
-    {{ $futureEvents := slice }}
-    {{ range $sortedEvents }}
-    {{ if .Params.event_start }}
-    {{ if ge (time .Params.event_start).Unix $now.Unix }}
-    {{ $futureEvents = $futureEvents | append . }}
-    {{ end }}
-    {{ end }}
-    {{ end }}
+    {{ $futureEvents := partial "event-filter.html" (dict "context" . "type" "future") }}
     {{ if gt (len $futureEvents) 0 }} {{ range $futureEvents }}
     <a href="{{ .Permalink }}"
         class="flex justify-between items-center py-4 border-b border-secondary last:border-b-0 hover:bg-white/50 transition-colors rounded px-4 -mx-4">
