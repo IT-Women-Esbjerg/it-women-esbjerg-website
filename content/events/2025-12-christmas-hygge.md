@@ -13,6 +13,10 @@ takeaways = [
 ]
 
 summary = 'We enjoyed a cozy Christmas gathering filled with warmth, laughter, and festive cheer. It was a wonderful opportunity to connect with fellow members, share holiday stories, and create lasting memories together.'
+
+[[images]]
+url = "https://res.cloudinary.com/dnwahijsm/image/upload/v1770392818/December_2025_-_Poster_l3xefl.jpg"
+alt = "Event poster"
 +++
 
 ## Description
