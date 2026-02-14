@@ -11,14 +11,14 @@
     {{ partial "css.html" . }}
     {{ end }}
 
-    <link rel="icon" href="{{ "favicon.ico" | relURL }}">
+    <link rel="icon" href="{{ " favicon.ico" | relURL }}">
 </head>
 
-<body class="flex flex-col bg-background mx-auto max-w-7xl text-accent min-h-screen">
+<body class="flex flex-col bg-background text-accent min-h-screen">
 
     {{ partial "header.html" . }}
     {{ partial "svg.html" . }}
-    <main class="grow">
+    <main>
         {{ block "main" . }}{{ end }}
     </main>
 
