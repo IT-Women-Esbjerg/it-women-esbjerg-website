@@ -36,3 +36,13 @@
 .btn-accent-outline {
   @apply text-accent font-semibold border-accent border hover:bg-accent/10;
 }
+
+/* Accordion animation for event list */
+.event-accordion-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.event-accordion-details.open {
+  max-height: 500px; /* Should be larger than the expected content height */
+}
