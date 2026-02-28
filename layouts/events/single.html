@@ -1,22 +1,19 @@
 {{ define "main" }}
-<article class="mt-32 content-container">
-    <!-- Event Header -->
-    <div class="my-8">
+<article class="my-8 sm:my-16 content-container">
+    <section class="flex flex-col gap-4 mb-8">
         <h1 class="text-4xl md:text-5xl text-primary font-bold mb-4">{{ .Title }}</h1>
+
+        <!-- Location and Date -->
         <div class="flex flex-col">
             <div class="flex items-center gap-2">
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-primary">
-                        <use href="#calendar-icon" />
-                    </svg>
-                    <span class="text-primary font-medium">
-                        {{ with $.Params.event_start }} {{ dateFormat "Mon, Jan 2, 2006, 15:04" . }} {{ end }}
-                        {{ with $.Params.event_end }} - {{ dateFormat "15:04" . }}{{ end }}
-                    </span>
-                </div>
-
+                <svg class="w-5 h-5 text-primary">
+                    <use href="#calendar-icon" />
+                </svg>
+                <span class="text-primary font-medium">
+                    {{ with $.Params.event_start }} {{ dateFormat "Mon, Jan 2, 2006, 15:04" . }} {{ end }}
+                    {{ with $.Params.event_end }} - {{ dateFormat "15:04" . }}{{ end }}
+                </span>
             </div>
-
 
             <div class="flex items-center gap-2">
                 <svg class="w-5 h-5 text-primary">
@@ -25,12 +22,28 @@
                 <span class="text-primary font-medium"> {{ with $.Params.location }}{{ . }} {{ end }}</span>
             </div>
         </div>
-    </div>
 
-    <!-- Event Content -->
-    <div class="prose prose-lg max-w-none mb-8">
-        {{ .Content }}
-    </div>
+        <div class="flex flex-col-reverse items-center lg:items-start lg:flex-row lg:justify-between gap-4 lg:gap-8">
+            <!-- Description -->
+            <div class="prose prose-lg max-w-none w-full lg:w-2/3">
+                {{ .Content }}
+            </div>
+
+            <!-- Poster (or placeholder) -->
+            <div
+                class="flex relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 items-center justify-center">
+                <svg class="absolute inset-0 w-full h-full z-0 text-primary -scale-x-100">
+                    <use href="#hero-backdrop" />
+                </svg>
+                <svg class="text-background z-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
+                    <use href="#calendar-icon" />
+                </svg>
+            </div>
+        </div>
+
+    </section>
+
+
 
     <!-- Event Photos Grid -->
     {{ with .Params.images }}
