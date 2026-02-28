@@ -40,20 +40,20 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             return dayEvents.length > 0 ? ['fc-day-has-event'] : [];
         },
-        dayCellDidMount: function(info) {
+        dayCellDidMount: function (info) {
             // Add click handler to days with events
             const dayEvents = events.filter(event => {
                 const eventDate = new Date(event.start);
                 return eventDate.toDateString() === info.date.toDateString();
             });
-            
+
             if (dayEvents.length > 0) {
                 info.el.style.cursor = 'pointer';
                 // Add title attribute for hover tooltip
                 const titles = dayEvents.map(e => e.title).join(', ');
                 info.el.title = titles;
-                
-                info.el.addEventListener('click', function() {
+
+                info.el.addEventListener('click', function () {
                     // Redirect to the first event on this day
                     if (dayEvents[0].url) {
                         window.location.href = dayEvents[0].url;
@@ -96,4 +96,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         calendar2.render();
     }
+
+
+    function render() {
+        // Tailwind's md breakpoint
+        if (window.innerWidth >= 768) {
+            // Show second calendar on medium and larger screens
+            const calendarEl2 = document.getElementById('calendar2');
+            if (calendarEl2) {
+                calendarEl2.style.display = 'block';
+            }
+        } else {
+            // Hide second calendar on small screens
+            const calendarEl2 = document.getElementById('calendar2');
+            if (calendarEl2) {
+                calendarEl2.style.display = 'none';
+            }
+        }
+    }
+
+    // Re-render on resize to update images shown
+    window.addEventListener('resize', function () {
+        render();
+    });
+
+    render();
 });

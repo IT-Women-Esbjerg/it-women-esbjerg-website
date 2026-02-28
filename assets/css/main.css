@@ -22,7 +22,7 @@
 @import "calendar.css";
 
 .content-container {
-  @apply w-full px-2 md:px-4 lg:px-6 mx-auto max-w-7xl;
+  @apply w-full px-4 sm:px-6 mx-auto max-w-7xl;
 }
 
 .btn {
