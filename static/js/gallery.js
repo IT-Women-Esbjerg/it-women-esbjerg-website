@@ -13,16 +13,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevBtn = document.getElementById('gallery-prev');
     const nextBtn = document.getElementById('gallery-next');
 
+    function getImagesToShow() {
+        // Tailwind's sm breakpoint
+        return window.innerWidth >= 640 ? 3 : 1;
+    }
+
     function render() {
+        const imagesToShow = getImagesToShow();
+        // Adjust start index to prevent overflow
+        if (start + imagesToShow > images.length) {
+            start = Math.max(0, images.length - imagesToShow);
+        }
         gallery.innerHTML = '';
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < imagesToShow; i++) {
             const img = images[start + i];
             if (!img) continue;
 
             const wrapper = document.createElement('div');
             wrapper.className = 'flex-1 flex justify-center items-center';
             let innerDiv, imgClass;
-            if (i === 1) {
+            if (imagesToShow === 1 || (imagesToShow === 3 && i === 1)) {
                 innerDiv = document.createElement('div');
                 innerDiv.className = 'w-full h-64 md:h-80 border-4 border-primary rounded-xl overflow-hidden shadow-lg scale-105';
                 imgClass = 'w-full h-full object-cover';
@@ -41,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
             gallery.appendChild(wrapper);
         }
         prevBtn.disabled = start === 0;
-        nextBtn.disabled = start + 3 >= images.length;
+        nextBtn.disabled = start + imagesToShow >= images.length;
         prevBtn.classList.toggle('opacity-50', prevBtn.disabled);
         prevBtn.classList.toggle('cursor-not-allowed', prevBtn.disabled);
         nextBtn.classList.toggle('opacity-50', nextBtn.disabled);
@@ -55,10 +65,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     nextBtn.addEventListener('click', function () {
-        if (start + 3 < images.length) {
+        const imagesToShow = getImagesToShow();
+        if (start + imagesToShow < images.length) {
             start++;
             render();
         }
+    });
+
+    // Re-render on resize to update images shown
+    window.addEventListener('resize', function () {
+        render();
     });
 
     render();

@@ -1,16 +1,49 @@
-<div class="p-6 md:p-8 w-full">
+<div class="p-6 md:p-8 w-full text-primary">
     {{ $futureEvents := partial "event-filter.html" (dict "context" . "type" "future") }}
-    {{ if gt (len $futureEvents) 0 }} {{ range $futureEvents }}
-    <a href="{{ .Permalink }}"
-        class="flex justify-between items-center py-4 border-b border-secondary last:border-b-0 hover:bg-white/50 transition-colors rounded px-4 -mx-4">
-        <div class="text-primary font-medium text-sm md:text-base shrink-0 min-w-24">
-            {{ with .Params.event_start }} {{ dateFormat "Mon, Jan 2" . }} {{ end }}
+    {{ if gt (len $futureEvents) 0 }} {{ range $index, $event := $futureEvents }}
+
+
+    {{ $id := printf "event-details-%d" $index }}
+    <div class="border-secondary py-4 border-b last:border-b-0 hover:bg-white/50 transition-colors rounded px-4 -mx-4">
+        <!-- Large screens: show date, title, and time -->
+        <div class="hidden md:flex justify-between items-center">
+            <a href="{{ $event.Permalink }}" class="justify-between items-center w-full flex py-0">
+                <p class="font-medium text-sm md:text-base shrink-0 min-w-24">
+                    {{ with $event.Params.event_start }} {{ dateFormat "Mon, Jan 2" . }} {{ end }}
+                </p>
+                <p class="flex-1 px-4 md:px-8 truncate">{{ $event.Title }}</p>
+                <p class="font-medium text-sm md:text-base">
+                    {{ with $event.Params.event_start }} {{ dateFormat "15:04" . }} {{ end }}
+                </p>
+            </a>
         </div>
-        <div class="text-primary flex-1 px-4 md:px-8 truncate">{{ .Title }}</div>
-        <div class="text-primary font-medium text-sm md:text-base">
-            {{ with .Params.event_start }} {{ dateFormat "15:04" . }} {{ end }}
+
+        <!-- Small screens: show title, and accordion icon -->
+        <div class="event-accordion flex flex-col md:hidden">
+            <div class="flex justify-between gap-4 items-center">
+                <a href="{{ $event.Permalink }}" class="font-medium text-base">
+                    <p class="truncate">{{ $event.Title }}</p>
+                </a>
+                <button class="event-accordion-toggle cursor-pointer transition-transform duration-200"
+                    aria-expanded="false" aria-controls="{{ $id }}">
+                    <svg class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+            <div id="{{ $id }}" class="event-accordion-details hidden mt-2 flex-col gap-1">
+                {{ with $event.Params.event_start }}
+                <p><span class="font-medium">{{ dateFormat "Mon, Jan 2" . }}</span> <span class="ml-2">{{ dateFormat
+                        "15:04" . }}</span></p>
+                {{ end }}
+                {{ with $event.Params.event_location }} <p>{{ . }}</p> {{ end }}
+            </div>
         </div>
-    </a>
+    </div>
+
+
     {{ end }} {{ else }}
     <div class="text-center py-8 border border-secondary rounded-lg">
         <p class="mb-4">
@@ -19,8 +52,8 @@
         <p>
             In the meantime, feel free to check out our
             <a href="/events" class="text-primary underline">past events</a> and join
-            our newsletter to stay informed about all the exciting things we have
-            planned.
+            our newsletter to stay informed about all the exciting things we are
+            planning.
         </p>
     </div>
     {{ end }}

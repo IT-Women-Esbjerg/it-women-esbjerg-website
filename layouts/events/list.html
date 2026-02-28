@@ -1,13 +1,14 @@
 {{ define "main" }}
 
-<article class="my-16 md:my-32 w-full mx-auto max-w-7xl">
+<article class="my-8 sm:my-16 md:my-32 content-container">
   <!-- Hero Section -->
-  <section class="flex justify-between items-center mb-16 px-4 lg:px-6">
+  <section class="flex justify-between items-center mb-4 sm:mb-8 md:mb-16 px-4 lg:px-6">
     <div class="flex-2 flex flex-col gap-5">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl uppercase font-extrabold">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl uppercase font-extrabold flex flex-wrap gap-2 md:gap-4">
         <span class="text-secondary">Preview</span>
         <span class="text-primary">IT</span><br />
-        <span class="text-primary">Women Esbjerg</span>
+        <span class="text-primary">Women</span>
+        <span class="text-primary">Esbjerg</span>
         <span class="text-secondary">Events</span>
       </h1>
       <div class="md:text-lg lg:text-xl flex flex-col gap-4">
@@ -23,8 +24,8 @@
         </p>
       </div>
       <div class="flex gap-4 md:gap-8">
-        <a href="/events" class="bg-accent text-white font-semibold px-1.5 py-1.5 md:px-4 md:py-2.5 rounded">See the
-          next event</a>
+        {{/* TODO: do we really need this? <a href="/events" class="btn btn-accent">See the
+          next event</a> */}}
       </div>
     </div>
     <div
@@ -43,31 +44,31 @@
   <!-- All Events -->
   <section class="flex flex-col items-center">
     <!-- Events List -->
-    <div class="md:w-2/3">{{ partial "event-list.html" . }}</div>
+    <div class="w-full sm:w-3/4 md:w-2/3 mb-8 sm:mb-16 md:mb-32">{{ partial "event-list.html" . }}</div>
 
     <!-- Past Event Previews -->
-    <ul class="mt-16 flex flex-col gap-12 w-full px-16">
+    <ul class="flex flex-col gap-12 w-full">
       <!-- Fetch and sort past events by event_start date in descending order -->
       {{ $pastEvents := partial "event-filter.html" (dict "context" . "type" "past") }}
       {{ range $index, $event := $pastEvents }}
       <li class="flex flex-col gap-4">
         <!-- Alternate layout for even and odd indexed events (text left, image right and vice versa) -->
         <div class="flex flex-col md:flex-row w-full gap-4 {{ if mod $index 2 }}md:flex-row-reverse{{ end }}">
-          <div class="flex flex-col md:w-2/3">
+          <div class="flex flex-col md:w-1/2">
             <a href="{{ .Permalink }}" class="flex flex-col">
               <p class="text-primary">
                 {{ with .Params.event_start }} {{ dateFormat "2 Jan 2006" . }}
                 {{ end }}
               </p>
-              <h3 class="text-4xl font-semibold mb-4">{{ .Title }}</h3>
+              <h3 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4">{{ .Title }}</h3>
             </a>
             <p>{{ with .Params.summary }}{{ . }}{{ end }}</p>
           </div>
           <!-- Display the first image from the event's images parameter -->
           {{ with index .Params.images 0 }}
-          <div class="flex flex-col md:w-1/3">
+          <div class="flex flex-col md:w-1/2">
             <img src="{{ .url }}" alt="{{ $.Title }}"
-              class="object-cover rounded-lg {{ if mod $index 2 }}mr-8{{ else }}ml-8{{ end }}" loading="lazy" />
+              class="object-cover rounded-lg {{ if mod $index 2 }}md:mr-8{{ else }}md:ml-8{{ end }}" loading="lazy" />
           </div>
           {{ end }}
         </div>
@@ -75,9 +76,9 @@
         {{ with .Params.takeaways }}
         <div>
           <h4 class="text-2xl font-semibold mb-4">Takeaways</h4>
-          <ul class="flex flex-wrap gap-4 w-full">
+          <ul class="flex flex-col sm:flex-row sm:flex-wrap gap-2 md:gap-4 w-full">
             {{ range . }}
-            <li class="bg-background-alt p-4 rounded-lg flex-1">{{ . }}</li>
+            <li class="bg-background-alt p-4 rounded-lg w-full sm:flex-1 wrap-break-words">{{ . }}</li>
             {{ end }}
           </ul>
         </div>
