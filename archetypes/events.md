@@ -6,6 +6,7 @@ event_start = '{{ .Date }}' # don't forget to adjust
 event_end = '{{ .Date }}' # don't forget to adjust
 location = '' # add location
 summary = '' # Short 1-2 sentence summary/sentiment about the event (optional)
+poster = '' # URL to event poster image (optional)
 
 # Takeaways/memories from the event (optional, only shown if event is in the past)
 takeaways = []

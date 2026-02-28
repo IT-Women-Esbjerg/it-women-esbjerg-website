@@ -28,8 +28,15 @@ for file in "$EVENT_DIR"/*.md; do
     continue
   fi
 
-  # Insert the new field just before the closing +++
-  awk -v n="$end_line" -v f="$FIELD" -v v="$VALUE" 'NR==n{print f " = " v; print} NR!=n' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+  # Insert before the first [[...]] array-of-tables block (if any), otherwise before closing +++
+  # This avoids TOML parsing fields as part of the array table instead of top-level params
+  insert_line=$(awk -v end="$end_line" 'NR > 1 && NR < end && /^\[\[/{print NR; exit}' "$file")
+  if [ -z "$insert_line" ]; then
+    insert_line="$end_line"
+  fi
+
+  # Insert the new field just before the target line
+  awk -v n="$insert_line" -v f="$FIELD" -v v="$VALUE" 'NR==n{print f " = " v; print} NR!=n' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
   echo "Added $FIELD to $file"
 done
 

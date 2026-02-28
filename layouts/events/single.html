@@ -34,11 +34,18 @@
         <div
             class="flex flex-col-reverse items-center lg:items-start lg:flex-row lg:justify-between gap-4 lg:gap-8 mb-8">
             <!-- Description -->
-            <div class="prose prose-lg max-w-none w-full lg:w-2/3 text-accent prose-headings:text-accent">
+            <div class="prose max-w-none w-full lg:w-2/3 text-accent prose-headings:text-accent">
                 {{ .Content }}
             </div>
 
             <!-- Poster (or placeholder) -->
+            {{ with .Params.poster }}
+            <div class="overflow-hidden rounded-lg shadow w-full lg:w-1/2">
+                <img src="{{ . }}" alt="Event poster"
+                    class="w-full border-4 border-primary rounded-xl overflow-hidden shadow-lg object-cover"
+                    loading="lazy">
+            </div>
+            {{ else }}
             <div
                 class="flex relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 items-center justify-center">
                 <svg class="absolute inset-0 w-full h-full z-0 text-primary -scale-x-100">
@@ -48,6 +55,7 @@
                     <use href="#calendar-icon" />
                 </svg>
             </div>
+            {{ end }}
         </div>
 
         <!-- Plans / Takeaways -->
