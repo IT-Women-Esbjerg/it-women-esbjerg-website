@@ -11,7 +11,7 @@
     {{ partial "css.html" . }}
     {{ end }}
 
-    <link rel="icon" href="{{ " favicon.ico" | relURL }}">
+    <link rel="icon" href="{{ "favicon.ico" | relURL }}">
 </head>
 
 <body class="flex flex-col bg-background text-accent min-h-screen">
@@ -26,12 +26,11 @@
 
     <!-- FullCalendar JS -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
-    <script src="{{ " js/script.js" | urlize | relURL}}" type="text/javascript"></script>
-    <script src="{{ " js/gallery.js" | urlize | relURL}}" type="text/javascript"></script>
-    <script src="{{ " js/calendar.js" | urlize | relURL}}" type="text/javascript"></script>
-    <script type="module" src="{{ " js/newsletter.js" | urlize | relURL}}"></script>
-    <script type="module" src="{{ " js/newsletter-main.js" | urlize | relURL}}"></script>
-    <script type="module" src="{{ " js/newsletter-footer.js" | urlize | relURL}}"></script>
+    <script src="{{ " js/shared.js" | urlize | relURL}}" type="module"></script>
+    <script src="{{ " js/gallery.js" | urlize | relURL}}" type="module"></script>
+    <script src="{{ " js/calendar.js" | urlize | relURL}}" type="module"></script>
+    <script src="{{ " js/newsletter.js" | urlize | relURL}}" type="module"></script>
+    <script src="{{ " js/events.js" | urlize | relURL}}" type="module"></script>
 </body>
 
 </html>

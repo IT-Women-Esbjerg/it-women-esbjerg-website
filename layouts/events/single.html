@@ -1,22 +1,27 @@
 {{ define "main" }}
-<article class="mt-32 content-container">
-    <!-- Event Header -->
-    <div class="my-8">
-        <h1 class="text-4xl md:text-5xl text-primary font-bold mb-4">{{ .Title }}</h1>
+
+{{ $now := now }}
+{{ $isFuture := and .Params.event_start (ge (time .Params.event_start).Unix $now.Unix) }}
+{{ $list := cond $isFuture .Params.plans .Params.takeaways }}
+<script id="event-detail-list-data" type="application/json">
+  {{ $list | jsonify }}
+</script>
+
+<article class="my-8 sm:my-16 content-container flex flex-col gap-8">
+    <section class="flex flex-col gap-4 md:gap-8 mb-8">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl text-primary font-bold mb-4">{{ .Title }}</h1>
+
+        <!-- Location and Date -->
         <div class="flex flex-col">
             <div class="flex items-center gap-2">
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-primary">
-                        <use href="#calendar-icon" />
-                    </svg>
-                    <span class="text-primary font-medium">
-                        {{ with $.Params.event_start }} {{ dateFormat "Mon, Jan 2, 2006, 15:04" . }} {{ end }}
-                        {{ with $.Params.event_end }} - {{ dateFormat "15:04" . }}{{ end }}
-                    </span>
-                </div>
-
+                <svg class="w-5 h-5 text-primary">
+                    <use href="#calendar-icon" />
+                </svg>
+                <span class="text-primary font-medium">
+                    {{ with $.Params.event_start }} {{ dateFormat "Mon, Jan 2, 2006, 15:04" . }} {{ end }}
+                    {{ with $.Params.event_end }} - {{ dateFormat "15:04" . }}{{ end }}
+                </span>
             </div>
-
 
             <div class="flex items-center gap-2">
                 <svg class="w-5 h-5 text-primary">
@@ -25,22 +30,69 @@
                 <span class="text-primary font-medium"> {{ with $.Params.location }}{{ . }} {{ end }}</span>
             </div>
         </div>
-    </div>
 
-    <!-- Event Content -->
-    <div class="prose prose-lg max-w-none mb-8">
-        {{ .Content }}
-    </div>
+        <div
+            class="flex flex-col-reverse items-center lg:items-start lg:flex-row lg:justify-between gap-4 lg:gap-8 mb-8">
+            <!-- Description -->
+            <div class="prose max-w-none w-full lg:w-2/3 text-accent prose-headings:text-accent">
+                {{ .Content }}
+            </div>
 
-    <!-- Event Photos Grid -->
-    {{ with .Params.images }}
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-8">
-        {{ range . }}
-        <div class="overflow-hidden rounded-lg shadow">
-            <img src="{{ .url }}" alt="{{ .alt }}" class="w-full h-64 object-cover" loading="lazy">
+            <!-- Poster (or placeholder) -->
+            {{ with .Params.poster }}
+            <div class="overflow-hidden rounded-lg shadow w-full lg:w-1/2">
+                <img src="{{ . }}" alt="Event poster"
+                    class="w-full border-4 border-primary rounded-xl overflow-hidden shadow-lg object-cover"
+                    loading="lazy">
+            </div>
+            {{ else }}
+            <div
+                class="flex relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 items-center justify-center">
+                <svg class="absolute inset-0 w-full h-full z-0 text-primary -scale-x-100">
+                    <use href="#hero-backdrop" />
+                </svg>
+                <svg class="text-background z-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
+                    <use href="#calendar-icon" />
+                </svg>
+            </div>
+            {{ end }}
+        </div>
+
+        <!-- Plans / Takeaways -->
+        {{ $heading := cond $isFuture "Plans" "Takeaways" }}
+        {{ if $list }}
+        <h4 class="text-2xl md:text-3xl font-semibold">{{ $heading }}</h4>
+        <div class="flex items-center justify-between gap-4">
+            <button class="md:hidden text-primary cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                id="event-detail-list-prev" disabled>
+                <svg class="w-12 h-12">
+                    <use href="#arrow-left" />
+                </svg>
+            </button>
+            <ul id="event-detail-list-points" class="flex gap-2 w-full"></ul>
+            <button class="md:hidden text-primary cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                id="event-detail-list-next">
+                <svg class="w-12 h-12">
+                    <use href="#arrow-right" />
+                </svg>
+            </button>
         </div>
         {{ end }}
-    </div>
-    {{ end }}
+    </section>
+
+    <!-- Gallery -->
+    <section>
+        <h4 class="text-2xl md:text-3xl font-semibold">Gallery</h4>
+        {{ with .Params.images }}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-8">
+            {{ range . }}
+            <div class="overflow-hidden rounded-lg shadow">
+                <img src="{{ .url }}" alt="{{ .alt }}" class="w-full h-64 object-cover" loading="lazy">
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </section>
+
 </article>
 {{ end }}

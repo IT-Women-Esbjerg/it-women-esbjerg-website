@@ -1,5 +1,5 @@
 
-export function handleNewsletterForm({ formId, emailId, consentId, submitId, messageId }) {
+function handleNewsletterForm({ formId, emailId, consentId, submitId, messageId }) {
     // Create hidden iframe for form submission (shared by all forms, only once)
     if (!document.querySelector('iframe[name="newsletter-iframe"]')) {
         const iframe = document.createElement('iframe');
@@ -82,3 +82,19 @@ export function handleNewsletterForm({ formId, emailId, consentId, submitId, mes
         }, 5000);
     }
 }
+
+handleNewsletterForm({
+    formId: 'newsletter-form-footer',
+    emailId: 'newsletter-email-footer',
+    consentId: 'newsletter-consent-footer',
+    submitId: 'newsletter-submit-footer',
+    messageId: 'newsletter-message-footer',
+});
+
+handleNewsletterForm({
+    formId: 'newsletter-form-main',
+    emailId: 'newsletter-email-main',
+    consentId: 'newsletter-consent-main',
+    submitId: 'newsletter-submit-main',
+    messageId: 'newsletter-message-main',
+});
