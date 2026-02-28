@@ -1,4 +1,12 @@
 {{ define "main" }}
+
+{{ $now := now }}
+{{ $isFuture := and .Params.event_start (ge (time .Params.event_start).Unix $now.Unix) }}
+{{ $list := cond $isFuture .Params.plans .Params.takeaways }}
+<script id="event-detail-list-data" type="application/json">
+  {{ $list | jsonify }}
+</script>
+
 <article class="my-8 sm:my-16 content-container flex flex-col gap-8">
     <section class="flex flex-col gap-4 md:gap-8 mb-8">
         <h1 class="text-3xl sm:text-4xl md:text-5xl text-primary font-bold mb-4">{{ .Title }}</h1>
@@ -23,7 +31,8 @@
             </div>
         </div>
 
-        <div class="flex flex-col-reverse items-center lg:items-start lg:flex-row lg:justify-between gap-4 lg:gap-8">
+        <div
+            class="flex flex-col-reverse items-center lg:items-start lg:flex-row lg:justify-between gap-4 lg:gap-8 mb-8">
             <!-- Description -->
             <div class="prose prose-lg max-w-none w-full lg:w-2/3 text-accent prose-headings:text-accent">
                 {{ .Content }}
@@ -42,40 +51,40 @@
         </div>
 
         <!-- Plans / Takeaways -->
-        {{ $now := now }}
-        {{ if .Params.event_start }}
-        {{ if ge (time .Params.event_start).Unix $now.Unix }}
-        <div>
-            <h4 class="text-2xl md:text-3xl font-semibold mb-4">Plans</h4>
-            <ul class="flex flex-col sm:flex-row sm:flex-wrap gap-2 md:gap-4 w-full">
-                {{ range .Params.plans }}
-                <li class="bg-background-alt p-4 rounded-lg w-full sm:flex-1 wrap-break-words">{{ . }}</li>
-                {{ end }}
-            </ul>
+        {{ $heading := cond $isFuture "Plans" "Takeaways" }}
+        {{ if $list }}
+        <h4 class="text-2xl md:text-3xl font-semibold">{{ $heading }}</h4>
+        <div class="flex items-center justify-between gap-4">
+            <button class="md:hidden text-primary cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                id="event-detail-list-prev" disabled>
+                <svg class="w-12 h-12">
+                    <use href="#arrow-left" />
+                </svg>
+            </button>
+            <ul id="event-detail-list-points" class="flex gap-2 w-full"></ul>
+            <button class="md:hidden text-primary cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                id="event-detail-list-next">
+                <svg class="w-12 h-12">
+                    <use href="#arrow-right" />
+                </svg>
+            </button>
         </div>
-        {{ else }}
-        <div>
-            <h4 class="text-2xl md:text-3xl font-semibold mb-4">Takeaways</h4>
-            <ul class="flex flex-col sm:flex-row sm:flex-wrap gap-2 md:gap-4 w-full">
-                {{ range .Params.takeaways }}
-                <li class="bg-background-alt p-4 rounded-lg w-full sm:flex-1 wrap-break-words">{{ . }}</li>
-                {{ end }}
-            </ul>
-        </div>
-        {{ end }}
         {{ end }}
     </section>
 
-
-    <!-- Event Photos Grid -->
-    {{ with .Params.images }}
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-8">
-        {{ range . }}
-        <div class="overflow-hidden rounded-lg shadow">
-            <img src="{{ .url }}" alt="{{ .alt }}" class="w-full h-64 object-cover" loading="lazy">
+    <!-- Gallery -->
+    <section>
+        <h4 class="text-2xl md:text-3xl font-semibold">Gallery</h4>
+        {{ with .Params.images }}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-8">
+            {{ range . }}
+            <div class="overflow-hidden rounded-lg shadow">
+                <img src="{{ .url }}" alt="{{ .alt }}" class="w-full h-64 object-cover" loading="lazy">
+            </div>
+            {{ end }}
         </div>
         {{ end }}
-    </div>
-    {{ end }}
+    </section>
+
 </article>
 {{ end }}
