@@ -1,46 +1,78 @@
 import { getAmountOfItemsToDisplay, showSlide } from './shared.js';
 
 const SLIDE_SIZE_MOBILE = 1;
-const SLIDE_SIZE_DESKTOP = 3;
+
+const GALLERY_DATA_ID = 'gallery-data';
+const GALLERY_CONTAINER_ID = 'gallery-images';
+const GALLERY_PREV_BTN_ID = 'gallery-prev';
+const GALLERY_NEXT_BTN_ID = 'gallery-next';
 
 /**
- * Builds all slide DOM nodes for a given slide size and appends them to the
- * gallery container, hidden. Returns the array of slide wrapper elements.
- * Slides are never removed from the DOM, so images stay decoded in memory.
+ * Builds one slide DOM node per image for mobile (single image per slide).
  *
  * @param {object[]} images
- * @param {number} slideSize
  * @param {HTMLElement} gallery
- * @returns {HTMLElement[]} Array of slide wrapper divs, one per page.
+ * @returns {HTMLElement[]} Array of slide wrapper divs, one per image.
  */
-function buildSlides(images, slideSize, gallery) {
-    const slides = [];
-    for (let start = 0; start < images.length; start += slideSize) {
+function buildMobileSlides(images, gallery) {
+    return images.map((img) => {
         const slide = document.createElement('div');
         slide.className = 'absolute inset-0 flex gap-4 justify-center items-center px-1';
         slide.hidden = true;
 
-        for (let i = 0; i < slideSize; i++) {
-            const img = images[start + i];
-            if (!img) continue;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'w-full h-full';
+        const innerDiv = document.createElement('div');
+        innerDiv.className = 'w-full h-full border-4 border-primary rounded-xl overflow-hidden shadow-lg';
 
+        const image = document.createElement('img');
+        image.src = img.url;
+        image.alt = img.alt;
+        image.className = 'w-full h-full object-cover';
+        innerDiv.appendChild(image);
+        wrapper.appendChild(innerDiv);
+        slide.appendChild(wrapper);
+
+        gallery.appendChild(slide);
+        return slide;
+    });
+}
+
+/**
+ * Builds one slide DOM node per image for desktop. Each slide shows the image
+ * at `centerIndex` in the highlighted center position, flanked by its
+ * neighbours. This means every image can be the focused center image and
+ * navigation advances by exactly one image at a time.
+ *
+ * @param {object[]} images
+ * @param {HTMLElement} gallery
+ * @returns {HTMLElement[]} Array of slide wrapper divs, one per image.
+ */
+function buildDesktopSlides(images, gallery) {
+    return images.map((_, centerIndex) => {
+        const slide = document.createElement('div');
+        slide.className = 'absolute inset-0 flex gap-4 justify-center items-center px-1';
+        slide.hidden = true;
+
+        // Positions: [center-1, center, center+1], wrapping around for edge slides
+        const imgIndices = [
+            (centerIndex - 1 + images.length) % images.length,
+            centerIndex,
+            (centerIndex + 1) % images.length,
+        ];
+
+        imgIndices.forEach((imgIndex, position) => {
+            const img = images[imgIndex];
             const wrapper = document.createElement('div');
-            let innerDiv;
+            const innerDiv = document.createElement('div');
 
-            if (slideSize === 1) {
-                // Mobile: single image, plain full-bleed, border frame
-                wrapper.className = 'w-full h-full';
-                innerDiv = document.createElement('div');
-                innerDiv.className = 'w-full h-full border-4 border-primary rounded-xl overflow-hidden shadow-lg';
-            } else if (i === 1) {
-                // Desktop: center/highlighted image — larger flex share, border frame
+            if (position === 1) {
+                // Center/highlighted image — larger flex share, border frame
                 wrapper.className = 'flex-[3] flex justify-center items-center';
-                innerDiv = document.createElement('div');
                 innerDiv.className = 'w-full h-72 border-4 border-primary rounded-xl overflow-hidden shadow-lg';
             } else {
-                // Desktop: side images — smaller flex share, plain style
+                // Side images — smaller flex share, plain style
                 wrapper.className = 'flex-[2] flex justify-center items-center';
-                innerDiv = document.createElement('div');
                 innerDiv.className = 'w-full h-52 rounded-lg overflow-hidden shadow-md';
             }
 
@@ -51,12 +83,11 @@ function buildSlides(images, slideSize, gallery) {
             innerDiv.appendChild(image);
             wrapper.appendChild(innerDiv);
             slide.appendChild(wrapper);
-        }
+        });
 
         gallery.appendChild(slide);
-        slides.push(slide);
-    }
-    return slides;
+        return slide;
+    });
 }
 
 
@@ -65,20 +96,20 @@ function buildSlides(images, slideSize, gallery) {
  * shows only the correct set, and wires up navigation.
  */
 function initGallery() {
-    const galleryDataElement = document.getElementById('gallery-data');
+    const galleryDataElement = document.getElementById(GALLERY_DATA_ID);
     if (!galleryDataElement) return;
 
     const images = JSON.parse(JSON.parse(galleryDataElement.textContent));
 
-    const gallery = document.getElementById('gallery-images');
-    const prevBtn = document.getElementById('gallery-prev');
-    const nextBtn = document.getElementById('gallery-next');
+    const gallery = document.getElementById(GALLERY_CONTAINER_ID);
+    const prevBtn = document.getElementById(GALLERY_PREV_BTN_ID);
+    const nextBtn = document.getElementById(GALLERY_NEXT_BTN_ID);
 
     if (!gallery || !prevBtn || !nextBtn) return;
 
     // Build all slides for both breakpoints once — images are decoded and cached
-    const mobileSlides = buildSlides(images, SLIDE_SIZE_MOBILE, gallery);
-    const desktopSlides = buildSlides(images, SLIDE_SIZE_DESKTOP, gallery);
+    const mobileSlides = buildMobileSlides(images, gallery);
+    const desktopSlides = buildDesktopSlides(images, gallery);
 
     let currentIndex = 0;
 
@@ -95,35 +126,32 @@ function initGallery() {
         // Ensure the inactive set is fully hidden
         inactiveSlides.forEach((s) => { s.hidden = true; });
 
-        // Clamp index for the active slide set
-        if (currentIndex >= activeSlides.length) {
-            currentIndex = activeSlides.length - 1;
-        }
+        // Wrap index for the active slide set (e.g. after a resize changes breakpoint)
+        currentIndex = currentIndex % activeSlides.length;
 
         showSlide(activeSlides, currentIndex, direction);
 
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex >= activeSlides.length - 1;
-        prevBtn.classList.toggle('opacity-50', prevBtn.disabled);
-        prevBtn.classList.toggle('cursor-not-allowed', prevBtn.disabled);
-        nextBtn.classList.toggle('opacity-50', nextBtn.disabled);
-        nextBtn.classList.toggle('cursor-not-allowed', nextBtn.disabled);
+        const single = activeSlides.length <= 1;
+        prevBtn.disabled = single;
+        nextBtn.disabled = single;
+        prevBtn.classList.toggle('opacity-50', single);
+        prevBtn.classList.toggle('cursor-not-allowed', single);
+        nextBtn.classList.toggle('opacity-50', single);
+        nextBtn.classList.toggle('cursor-not-allowed', single);
     }
 
     prevBtn.addEventListener('click', function () {
-        if (currentIndex > 0) {
-            currentIndex--;
-            render('right');
-        }
+        const isMobile = getAmountOfItemsToDisplay() === SLIDE_SIZE_MOBILE;
+        const activeSlides = isMobile ? mobileSlides : desktopSlides;
+        currentIndex = (currentIndex - 1 + activeSlides.length) % activeSlides.length;
+        render('right');
     });
 
     nextBtn.addEventListener('click', function () {
         const isMobile = getAmountOfItemsToDisplay() === SLIDE_SIZE_MOBILE;
         const activeSlides = isMobile ? mobileSlides : desktopSlides;
-        if (currentIndex < activeSlides.length - 1) {
-            currentIndex++;
-            render('left');
-        }
+        currentIndex = (currentIndex + 1) % activeSlides.length;
+        render('left');
     });
 
     window.addEventListener('resize', function () {

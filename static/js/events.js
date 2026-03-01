@@ -34,20 +34,31 @@ function buildTakeawaySlides(items, pageSize, container) {
     return slides;
 }
 
+const EVENT_DETAIL_PREFIX = 'event-detail-list';
+const EVENT_DETAIL_DATA_ID = `${EVENT_DETAIL_PREFIX}-data`;
+const EVENT_DETAIL_CONTAINER_ID = `${EVENT_DETAIL_PREFIX}-points`;
+const EVENT_DETAIL_PREV_BTN_ID = `${EVENT_DETAIL_PREFIX}-prev`;
+const EVENT_DETAIL_NEXT_BTN_ID = `${EVENT_DETAIL_PREFIX}-next`;
+
+const EVENT_ACCORDION_CLASS = '.event-accordion';
+const EVENT_ACCORDION_TOGGLE_CLASS = '.event-accordion-toggle';
+const EVENT_ACCORDION_DETAILS_CLASS = '.event-accordion-details';
+
+
 /**
  * Initialises the takeaways/plans carousel: builds all slides for both
  * breakpoints up front and wires up navigation.
  */
 function initEventTakeaways() {
-    const dataEl = document.getElementById('event-detail-list-data');
+    const dataEl = document.getElementById(EVENT_DETAIL_DATA_ID);
     if (!dataEl) return;
 
     const items = JSON.parse(JSON.parse(dataEl.textContent));
     if (!items.length) return;
 
-    const listContainer = document.getElementById('event-detail-list-points');
-    const prevBtn = document.getElementById('event-detail-list-prev');
-    const nextBtn = document.getElementById('event-detail-list-next');
+    const listContainer = document.getElementById(EVENT_DETAIL_CONTAINER_ID);
+    const prevBtn = document.getElementById(EVENT_DETAIL_PREV_BTN_ID);
+    const nextBtn = document.getElementById(EVENT_DETAIL_NEXT_BTN_ID);
 
     if (!listContainer || !prevBtn || !nextBtn) return;
 
@@ -104,25 +115,17 @@ function initEventTakeaways() {
  * Renders the accordions for the event list, allowing only one to be open at a time and adding smooth animations.
  */
 function renderEventListAccordions() {
-    const accordions = document.querySelectorAll('.event-accordion');
+    const accordions = document.querySelectorAll(EVENT_ACCORDION_CLASS);
     accordions.forEach(function (accordion) {
-        const toggle = accordion.querySelector('.event-accordion-toggle');
-        const details = accordion.querySelector('.event-accordion-details');
+        const toggle = accordion.querySelector(EVENT_ACCORDION_TOGGLE_CLASS);
+        const details = accordion.querySelector(EVENT_ACCORDION_DETAILS_CLASS);
         const chevron = toggle ? toggle.querySelector('svg') : null;
         if (toggle && details) {
             toggle.addEventListener('click', function (e) {
                 // Close all other accordions
                 accordions.forEach(function (otherAccordion) {
                     if (otherAccordion !== accordion) {
-                        const otherDetails = otherAccordion.querySelector('.event-accordion-details');
-                        const otherToggle = otherAccordion.querySelector('.event-accordion-toggle');
-                        const otherChevron = otherToggle ? otherToggle.querySelector('svg') : null;
-                        if (otherDetails && (otherDetails.classList.contains('open') || !otherDetails.classList.contains('hidden'))) {
-                            otherDetails.classList.remove('open');
-                            setTimeout(() => otherDetails.classList.add('hidden'), 300);
-                            if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
-                            if (otherChevron) otherChevron.style.transform = '';
-                        }
+                        closeAccordion(otherAccordion);
                     }
                 });
                 // Toggle this accordion with animation
@@ -142,6 +145,22 @@ function renderEventListAccordions() {
             });
         }
     });
+}
+
+/**
+ * Closes the given accordion with animation.
+ * @param {HTMLElement} accordion 
+ */
+function closeAccordion(accordion) {
+    const otherDetails = accordion.querySelector(EVENT_ACCORDION_DETAILS_CLASS);
+    const otherToggle = accordion.querySelector(EVENT_ACCORDION_TOGGLE_CLASS);
+    const otherChevron = otherToggle ? otherToggle.querySelector('svg') : null;
+    if (otherDetails && (otherDetails.classList.contains('open') || !otherDetails.classList.contains('hidden'))) {
+        otherDetails.classList.remove('open');
+        setTimeout(() => otherDetails.classList.add('hidden'), 300);
+        if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+        if (otherChevron) otherChevron.style.transform = '';
+    }
 }
 
 
