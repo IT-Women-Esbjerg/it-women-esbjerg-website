@@ -42,7 +42,7 @@
             {{ with .Params.poster }}
             <div class="overflow-hidden rounded-lg shadow w-full lg:w-1/2">
                 <img src="{{ . }}" alt="Event poster"
-                    class="w-full border-4 border-primary rounded-xl overflow-hidden shadow-lg object-cover"
+                    class="w-full max-h-[50vh] border-4 border-primary rounded-xl overflow-hidden shadow-lg object-contain mx-auto"
                     loading="lazy">
             </div>
             {{ else }}

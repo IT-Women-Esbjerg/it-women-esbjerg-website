@@ -1,27 +1,39 @@
 +++
 title = "Privacy Policy"
-date = 2025-11-25T19:47:27+01:00
+date = 2026-03-01T10:00:00+01:00
 draft = false
 +++
 
-_Last updated: 25-Nov-2025_
+_Last updated: 01-Mar-2026_
 
-IT Women Esbjerg only collects your email address if you sign up for our newsletter. We do **not** store your email address or any other personal data ourselves. All newsletter subscriptions and email processing are handled by [Brevo (Sendinblue)](https://www.brevo.com/legal/privacypolicy/).
+IT Women Esbjerg values your privacy. We only collect the bare minimum data needed to keep you updated about our community. Under the GDPR, IT Women Esbjerg acts as the **Data Controller** for this information.
 
-## What information do we collect?
+### What information do we collect?
 
-- **Email address** (if you subscribe to our newsletter)
+- **Email address:** Collected only when you actively subscribe to our newsletter.
+- **Newsletter interaction data:** Our email provider uses standard tracking pixels to tell us if an email was opened or a link was clicked. This helps us see what topics interest our community the most.
 
-## How is your information used?
+### How is your information used and stored?
 
-- To send you updates and information about our events via email.
-- All email addresses are managed and processed by Brevo (Sendinblue) in accordance with their [privacy policy](https://www.brevo.com/legal/privacypolicy/).
-- If you unsubscribe, your email address is removed from our mailing list and is no longer accessible to us.
+- We use your email address to send you updates, news, and event invitations.
+- **Our legal basis** for processing this data is your explicit **consent** when you sign up.
+- We do not store your data on our own local devices. All newsletter subscriptions and data processing are handled securely by our Data Processor, [Brevo (Sendinblue)](https://www.brevo.com/legal/privacypolicy/).
 
-## Your rights
+### How long do we keep your data?
 
-If you have questions about your data or wish to exercise your rights under applicable law, please contact us at [itwomenesbjerg@gmail.com](mailto:itwomenesbjerg@gmail.com).
+We only keep your email address for as long as you wish to hear from us. If you click the "unsubscribe" link at the bottom of any of our emails, you withdraw your consent. Your email is then automatically removed from our active mailing list.
 
-## Third-party links
+### Your rights under the GDPR
 
-Our website may contain links to other websites. We are not responsible for the privacy practices of those sites.
+You have full control over your data. By law, you have the right to:
+
+- **Access** the personal data we hold about you.
+- **Correct** any inaccurate information.
+- **Delete** your data entirely (the right to be forgotten).
+- **Withdraw your consent** at any time.
+
+If you have questions or wish to exercise any of these rights, please contact us at [itwomenesbjerg@gmail.com](mailto:itwomenesbjerg@gmail.com).
+
+### Third-party links
+
+Our website may contain links to other websites. We are not responsible for the privacy practices or content of those external sites.
