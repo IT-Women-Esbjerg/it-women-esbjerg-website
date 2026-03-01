@@ -25,6 +25,23 @@
   @apply w-full px-4 sm:px-6 mx-auto max-w-7xl;
 }
 
+.prose {
+  --tw-prose-body: var(--color-accent);
+  --tw-prose-headings: var(--color-accent);
+  --tw-prose-lead: var(--color-accent);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-accent);
+  --tw-prose-counters: var(--color-accent);
+  --tw-prose-bullets: var(--color-accent);
+  --tw-prose-hr: var(--color-accent);
+  --tw-prose-quotes: var(--color-accent);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-captions: var(--color-accent);
+  --tw-prose-code: var(--color-accent);
+  --tw-prose-th-borders: var(--color-accent);
+  --tw-prose-td-borders: var(--color-accent);
+}
+
 .btn {
   @apply font-semibold px-1.5 py-1.5 md:px-4 md:py-2.5 rounded text-center transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90;
 }
