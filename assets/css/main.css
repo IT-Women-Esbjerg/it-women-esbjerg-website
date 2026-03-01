@@ -54,6 +54,34 @@
   @apply text-accent font-semibold border-accent border hover:bg-accent/10;
 }
 
+/* Carousel slide animation */
+@keyframes carousel-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes carousel-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.carousel-slide-in-left {
+  animation: carousel-slide-in-left 0.3s ease both;
+}
+.carousel-slide-in-right {
+  animation: carousel-slide-in-right 0.3s ease both;
+}
+
 /* Accordion animation for event list */
 .event-accordion-details {
   max-height: 0;

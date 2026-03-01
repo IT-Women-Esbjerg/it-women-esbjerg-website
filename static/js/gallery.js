@@ -1,96 +1,166 @@
-import { getAmountOfItemsToDisplay } from './shared.js';
+import { getAmountOfItemsToDisplay, showSlide } from './shared.js';
+
+const SLIDE_SIZE_MOBILE = 1;
+
+const GALLERY_DATA_ID = 'gallery-data';
+const GALLERY_CONTAINER_ID = 'gallery-images';
+const GALLERY_PREV_BTN_ID = 'gallery-prev';
+const GALLERY_NEXT_BTN_ID = 'gallery-next';
 
 /**
- * Sets up the navigation for the gallery images, allowing users to navigate through the list on smaller screens.
+ * Builds one slide DOM node per image for mobile (single image per slide).
+ *
+ * @param {object[]} images
+ * @param {HTMLElement} gallery
+ * @returns {HTMLElement[]} Array of slide wrapper divs, one per image.
  */
-function setUpGalleryNavigation() {
-    const prevBtn = document.getElementById('gallery-prev');
-    const nextBtn = document.getElementById('gallery-next');
-    let startIndex = 0;
-
-    if (!prevBtn || !nextBtn) {
-        return;
-    }
-
-    prevBtn.addEventListener('click', function () {
-        if (startIndex > 0) {
-            startIndex--;
-            renderGalleryImages(startIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', function () {
-        startIndex++;
-        renderGalleryImages(startIndex);
-    });
-
-    // Re-render on resize to update images shown
-    window.addEventListener('resize', function () {
-        renderGalleryImages(startIndex);
-    });
-}
-
-/**
- * Renders the gallery images based on the current start index and the number of items to display, and updates the navigation buttons accordingly.
- * @param {number} startIndex - The index of the first image to display in the gallery. Defaults to 0.
- * @returns 
- */
-function renderGalleryImages(startIndex = 0) {
-    const galleryDataElement = document.getElementById('gallery-data');
-    if (!galleryDataElement) {
-        // No gallery data on this page, skip gallery initialization
-        return;
-    }
-
-    const escapedImagesText = galleryDataElement.textContent;
-    const imagesText = JSON.parse(escapedImagesText);
-    const images = JSON.parse(imagesText);
-
-    const gallery = document.getElementById('gallery-images');
-    const prevBtn = document.getElementById('gallery-prev');
-    const nextBtn = document.getElementById('gallery-next');
-
-    const imagesToShow = getAmountOfItemsToDisplay();
-    // Adjust start index to prevent overflow
-    if (startIndex + imagesToShow > images.length) {
-        startIndex = Math.max(0, images.length - imagesToShow);
-    }
-    gallery.innerHTML = '';
-    for (let i = 0; i < imagesToShow; i++) {
-        const img = images[startIndex + i];
-        if (!img) continue;
+function buildMobileSlides(images, gallery) {
+    return images.map((img) => {
+        const slide = document.createElement('div');
+        slide.className = 'absolute inset-0 flex gap-4 justify-center items-center px-1';
+        slide.hidden = true;
 
         const wrapper = document.createElement('div');
-        wrapper.className = 'flex-1 flex justify-center items-center';
-        let innerDiv, imgClass;
-        if (imagesToShow === 1 || (imagesToShow === 3 && i === 1)) {
-            innerDiv = document.createElement('div');
-            innerDiv.className = 'w-full h-64 lg:h-80 border-4 border-primary rounded-xl overflow-hidden shadow-lg scale-105';
-            imgClass = 'w-full h-full object-cover';
-        } else {
-            innerDiv = document.createElement('div');
-            innerDiv.className = 'w-full h-48 md:h-64 rounded-lg overflow-hidden shadow-md';
-            imgClass = 'w-full h-full object-cover';
-        }
+        wrapper.className = 'w-full h-full';
+        const innerDiv = document.createElement('div');
+        innerDiv.className = 'w-full h-full border-4 border-primary rounded-xl overflow-hidden shadow-lg';
+
         const image = document.createElement('img');
         image.src = img.url;
         image.alt = img.alt;
-        image.className = imgClass;
-        image.loading = 'lazy';
+        image.className = 'w-full h-full object-cover';
         innerDiv.appendChild(image);
         wrapper.appendChild(innerDiv);
-        gallery.appendChild(wrapper);
-    }
-    prevBtn.disabled = startIndex === 0;
-    nextBtn.disabled = startIndex + imagesToShow >= images.length;
-    prevBtn.classList.toggle('opacity-50', prevBtn.disabled);
-    prevBtn.classList.toggle('cursor-not-allowed', prevBtn.disabled);
-    nextBtn.classList.toggle('opacity-50', nextBtn.disabled);
-    nextBtn.classList.toggle('cursor-not-allowed', nextBtn.disabled);
+        slide.appendChild(wrapper);
+
+        gallery.appendChild(slide);
+        return slide;
+    });
+}
+
+/**
+ * Builds one slide DOM node per image for desktop. Each slide shows the image
+ * at `centerIndex` in the highlighted center position, flanked by its
+ * neighbours. This means every image can be the focused center image and
+ * navigation advances by exactly one image at a time.
+ *
+ * @param {object[]} images
+ * @param {HTMLElement} gallery
+ * @returns {HTMLElement[]} Array of slide wrapper divs, one per image.
+ */
+function buildDesktopSlides(images, gallery) {
+    return images.map((_, centerIndex) => {
+        const slide = document.createElement('div');
+        slide.className = 'absolute inset-0 flex gap-4 justify-center items-center px-1';
+        slide.hidden = true;
+
+        // Positions: [center-1, center, center+1], wrapping around for edge slides
+        const imgIndices = [
+            (centerIndex - 1 + images.length) % images.length,
+            centerIndex,
+            (centerIndex + 1) % images.length,
+        ];
+
+        imgIndices.forEach((imgIndex, position) => {
+            const img = images[imgIndex];
+            const wrapper = document.createElement('div');
+            const innerDiv = document.createElement('div');
+
+            if (position === 1) {
+                // Center/highlighted image — larger flex share, border frame
+                wrapper.className = 'flex-[3] flex justify-center items-center';
+                innerDiv.className = 'w-full h-72 border-4 border-primary rounded-xl overflow-hidden shadow-lg';
+            } else {
+                // Side images — smaller flex share, plain style
+                wrapper.className = 'flex-[2] flex justify-center items-center';
+                innerDiv.className = 'w-full h-52 rounded-lg overflow-hidden shadow-md';
+            }
+
+            const image = document.createElement('img');
+            image.src = img.url;
+            image.alt = img.alt;
+            image.className = 'w-full h-full object-cover';
+            innerDiv.appendChild(image);
+            wrapper.appendChild(innerDiv);
+            slide.appendChild(wrapper);
+        });
+
+        gallery.appendChild(slide);
+        return slide;
+    });
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    setUpGalleryNavigation();
-    renderGalleryImages();
-});
+/**
+ * Initialises the gallery: builds all slides for both breakpoints up front,
+ * shows only the correct set, and wires up navigation.
+ */
+function initGallery() {
+    const galleryDataElement = document.getElementById(GALLERY_DATA_ID);
+    if (!galleryDataElement) return;
+
+    const images = JSON.parse(JSON.parse(galleryDataElement.textContent));
+
+    const gallery = document.getElementById(GALLERY_CONTAINER_ID);
+    const prevBtn = document.getElementById(GALLERY_PREV_BTN_ID);
+    const nextBtn = document.getElementById(GALLERY_NEXT_BTN_ID);
+
+    if (!gallery || !prevBtn || !nextBtn) return;
+
+    // Build all slides for both breakpoints once — images are decoded and cached
+    const mobileSlides = buildMobileSlides(images, gallery);
+    const desktopSlides = buildDesktopSlides(images, gallery);
+
+    let currentIndex = 0;
+
+    /**
+     * Updates which set of slides is active for the current breakpoint,
+     * shows the right slide, and refreshes button state.
+     * @param {'left'|'right'|null} direction
+     */
+    function render(direction) {
+        const isMobile = getAmountOfItemsToDisplay() === SLIDE_SIZE_MOBILE;
+        const activeSlides = isMobile ? mobileSlides : desktopSlides;
+        const inactiveSlides = isMobile ? desktopSlides : mobileSlides;
+
+        // Ensure the inactive set is fully hidden
+        inactiveSlides.forEach((s) => { s.hidden = true; });
+
+        // Wrap index for the active slide set (e.g. after a resize changes breakpoint)
+        currentIndex = currentIndex % activeSlides.length;
+
+        showSlide(activeSlides, currentIndex, direction);
+
+        const single = activeSlides.length <= 1;
+        prevBtn.disabled = single;
+        nextBtn.disabled = single;
+        prevBtn.classList.toggle('opacity-50', single);
+        prevBtn.classList.toggle('cursor-not-allowed', single);
+        nextBtn.classList.toggle('opacity-50', single);
+        nextBtn.classList.toggle('cursor-not-allowed', single);
+    }
+
+    prevBtn.addEventListener('click', function () {
+        const isMobile = getAmountOfItemsToDisplay() === SLIDE_SIZE_MOBILE;
+        const activeSlides = isMobile ? mobileSlides : desktopSlides;
+        currentIndex = (currentIndex - 1 + activeSlides.length) % activeSlides.length;
+        render('right');
+    });
+
+    nextBtn.addEventListener('click', function () {
+        const isMobile = getAmountOfItemsToDisplay() === SLIDE_SIZE_MOBILE;
+        const activeSlides = isMobile ? mobileSlides : desktopSlides;
+        currentIndex = (currentIndex + 1) % activeSlides.length;
+        render('left');
+    });
+
+    window.addEventListener('resize', function () {
+        render(null);
+    });
+
+    // Initial render — no animation
+    render(null);
+}
+
+
+document.addEventListener('DOMContentLoaded', initGallery);

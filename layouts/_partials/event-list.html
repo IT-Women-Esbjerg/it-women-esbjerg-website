@@ -6,7 +6,7 @@
     {{ $id := printf "event-details-%d" $index }}
     <div class="border-secondary py-4 border-b last:border-b-0 hover:bg-white/50 transition-colors px-4 -mx-4">
         <!-- Large screens: show date, title, and time -->
-        <div class="hidden md:flex justify-between items-center">
+        <div class="hidden md:flex justify-between items-center text-accent">
             <a href="{{ $event.Permalink }}" class="justify-between items-center w-full flex py-0">
                 <p class="font-medium text-sm md:text-base shrink-0 min-w-24">
                     {{ with $event.Params.event_start }} {{ dateFormat "Mon, Jan 2" . }} {{ end }}
