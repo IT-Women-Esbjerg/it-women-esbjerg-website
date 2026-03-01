@@ -68,7 +68,8 @@
           {{ with index .Params.images 0 }}
           <div class="flex flex-col md:w-1/2">
             <img src="{{ .url }}" alt="{{ $.Title }}"
-              class="object-cover rounded-lg {{ if mod $index 2 }}md:mr-8{{ else }}md:ml-8{{ end }}" loading="lazy" />
+              class="object-cover max-h-96 rounded-lg {{ if mod $index 2 }}md:mr-8{{ else }}md:ml-8{{ end }}"
+              loading="lazy" />
           </div>
           {{ end }}
         </div>
