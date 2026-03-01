@@ -1,6 +1,5 @@
-import { getAmountOfItemsToDisplay } from './shared.js';
+import { getAmountOfItemsToDisplay, showSlide } from './shared.js';
 
-// Slide size constants — must match getAmountOfItemsToDisplay
 const SLIDE_SIZE_MOBILE = 1;
 const SLIDE_SIZE_DESKTOP = 3;
 
@@ -60,31 +59,6 @@ function buildSlides(images, slideSize, gallery) {
     return slides;
 }
 
-/**
- * Shows the slide at the given index, animating in from the given direction,
- * and hides the previously visible slide.
- *
- * @param {HTMLElement[]} slides
- * @param {number} index
- * @param {'left'|'right'|null} direction
- */
-function showSlide(slides, index, direction) {
-    slides.forEach((slide, i) => {
-        if (i === index) {
-            slide.hidden = false;
-            if (direction) {
-                const cls = direction === 'left' ? 'gallery-slide-in-left' : 'gallery-slide-in-right';
-                slide.classList.remove('gallery-slide-in-left', 'gallery-slide-in-right');
-                // Force reflow so the animation restarts if same class was applied before
-                void slide.offsetWidth;
-                slide.classList.add(cls);
-            }
-        } else {
-            slide.hidden = true;
-            slide.classList.remove('gallery-slide-in-left', 'gallery-slide-in-right');
-        }
-    });
-}
 
 /**
  * Initialises the gallery: builds all slides for both breakpoints up front,
