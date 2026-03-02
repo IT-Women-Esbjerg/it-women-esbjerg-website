@@ -14,15 +14,22 @@ collections:
   folder: /content/events
   fields:
   - { name: title, label: Title, widget: string }
-  - { name: draft, label: Draft, widget: boolean }
-  - { name: description, label: Description, widget: richtext }
+  - { name: draft, label: Draft, widget: boolean, default: true }
+  - { name: description, label: Description, widget: markdown }
   - { name: event_start, label: Event Start, widget: datetime }
   - { name: event_end, label: Event End, widget: datetime }
-  - { name: location, label: Location, widget: string }
-  - { name: poster, label: Poster, widget: image }
-  - { name: plans, label: Plans/Agenda, widget: list, fields: [ { name: plan, label: Plan, widget: string } ] }
-  - { name: takeaways, label: Takeaways, widget: list, fields: [ { name: takeaway, label: Takeaway, widget: string } ] }
-  - { name: images, label: Images, widget: list, fields: [ { name: image, label: Image, widget: image } ] }
+  - { name: location, label: Location, widget: string, default: "Syddansk Erhvervsakademi, Spangsbjerg Kirkevej 103, 6700 Esbjerg" }
+  - { name: poster, label: Poster, widget: image, required: false }
+  - { name: plans, label: Plans/Agenda, widget: list, field: { name: plan, widget: string }, required: false }
+  - name: images
+    label: Images
+    widget: list
+    required: false
+    fields:
+    - { name: url, label: Image URL, widget: image }
+    - { name: alt, label: Alt Text, widget: string }
+  - { name: takeaways, label: Takeaways, widget: list, field: { name: takeaway, widget: string }, required: false }
+  - { name: summary, label: Post-Event Summary, widget: richtext, required: false }
 
 media_libraries:
   cloudinary:
