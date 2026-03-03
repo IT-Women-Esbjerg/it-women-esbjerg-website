@@ -1,0 +1,31 @@
+name: CMS Auto-Merge
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  automerge:
+    if: startsWith(github.head_ref, 'cms/') # Only trigger for CMS branches
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+
+      - name: Check for content changes
+        id: check_changes
+        run: |
+          if git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | grep -qvE '^(content/|static/admin/config.yml)'; then
+            echo "Non-content files changed. Skipping auto-merge."
+            exit 1
+          fi
+
+      - name: Approve and Merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr review --approve "${{ github.event.pull_request.html_url }}"
+          gh pr merge --auto --merge "${{ github.event.pull_request.html_url }}"
