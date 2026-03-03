@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: IT-Women-Esbjerg/it-women-esbjerg-website
+  base_url: https://sveltia-cms-auth.itwomenesbjerg.workers.dev
+
+media_folder: /public/media
+public_folder: /media
+
+collections:
+- name: events
+  label: Events
+  label_singular: Event
+  folder: /content/events
+  fields:
+  - { name: title, label: Title, widget: string }
+  - { name: draft, label: Draft, widget: boolean, default: true }
+  - { name: description, label: Description, widget: markdown }
+  - { name: event_start, label: Event Start, widget: datetime }
+  - { name: event_end, label: Event End, widget: datetime }
+  - { name: location, label: Location, widget: string, default: "Syddansk Erhvervsakademi, Spangsbjerg Kirkevej 103, 6700 Esbjerg" }
+  - { name: poster, label: Poster, widget: image, required: false }
+  - { name: plans, label: Plans/Agenda, widget: list, field: { name: plan, widget: string }, required: false }
+  - name: images
+    label: Images
+    widget: list
+    required: false
+    fields:
+    - { name: url, label: Image URL, widget: image }
+    - { name: alt, label: Alt Text, widget: string }
+  - { name: takeaways, label: Takeaways, widget: list, field: { name: takeaway, widget: string }, required: false }
+  - { name: summary, label: Post-Event Summary, widget: richtext, required: false }
+
+media_libraries:
+  cloudinary:
+    config:
+      cloud_name: dnwahijsm
+      api_key: 737422483695581
