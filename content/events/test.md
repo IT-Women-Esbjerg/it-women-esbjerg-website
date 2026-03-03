@@ -1,6 +1,6 @@
 ---
 title: TEST
-draft: true
+draft: false
 description: TEST
 event_start: 2026-03-03T21:36:00
 event_end: 2026-03-03T21:36:00
