@@ -3,6 +3,10 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+permissions:
+  pull-requests: write
+  contents: write
+
 jobs:
   automerge:
     if: startsWith(github.head_ref, 'cms/') # Only trigger for CMS branches
@@ -13,7 +17,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-
 
       - name: Check for content changes
         id: check_changes
