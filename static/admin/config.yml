@@ -3,6 +3,7 @@
 backend:
   name: github
   repo: IT-Women-Esbjerg/it-women-esbjerg-website
+  base_url: https://sveltia-cms-auth.itwomenesbjerg.workers.dev
 
 media_folder: /public/media
 public_folder: /media
