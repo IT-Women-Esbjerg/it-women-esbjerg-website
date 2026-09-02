@@ -1,6 +1,6 @@
 ---
 title: Social Event
-draft: true
+draft: false
 description: |-
   For this month, we would like to invite you all for a dinner/drinks event at Streetfood Esbjerg on the 16th of September (Saturday). Whether you’re looking to make new connections, swap ideas, or just hang out with like-minded people, this is the place to be.
 
@@ -11,7 +11,10 @@ event_start: 2026-09-19T16:00:00
 event_end: ''
 location: Streetfood Esbjerg (Kongensgade 34, Borgergade 33, 6700 Esbjerg)
 poster: ''
-plans: []
+plans:
+  - Drinks🍹
+  - Have fun!
+  - Stay for dinner if you'd like
 images: []
 takeaways: []
 summary: ''
