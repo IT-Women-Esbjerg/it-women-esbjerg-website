@@ -1,6 +1,6 @@
 ---
 title: Winter Hygge
-draft: true
+draft: false
 description: |-
   Let’s wrap up the year together!
 
