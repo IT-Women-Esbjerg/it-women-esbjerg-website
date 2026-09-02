@@ -1,8 +1,8 @@
 ---
-title: Social Event
+title: September Social Event
 draft: false
 description: |-
-  For this month, we would like to invite you all for a dinner/drinks event at Streetfood Esbjerg on the 16th of September (Saturday). Whether you’re looking to make new connections, swap ideas, or just hang out with like-minded people, this is the place to be.
+  For this month, we would like to invite you all for a dinner/drinks event at Streetfood Esbjerg on the 19th of September (Saturday). Whether you’re looking to make new connections, swap ideas, or just hang out with like-minded people, this is the place to be.
 
   Everyone will be responsible for getting their own food and drinks, but the prices are affordable, and there are many options to choose from, so we are sure everyone will find something they’d like.
 
