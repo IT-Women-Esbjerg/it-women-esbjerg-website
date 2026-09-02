@@ -8,7 +8,7 @@ description: |-
 
   We will book a table so there is enough space for everyone. Let us know if you’re coming so we can plan accordingly!
 event_start: 2026-09-19T16:00:00
-event_end: ''
+event_end: 2026-09-02T21:00:00
 location: Streetfood Esbjerg (Kongensgade 34, Borgergade 33, 6700 Esbjerg)
 poster: ''
 plans:
